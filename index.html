@@ -1,66 +1,62 @@
-<script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trimble Connect Extension</title>
+  <script type="module">
+    import * as Extensions from "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/Extensions.js";
 
-this.API = await Extensions.connect(
-  window.parent,
-  (event, args) => {
-    switch (event) {
-      case "extension.command":
-        //"Command executed by the user: args.data"
-        break;
-      case "extension.accessToken":
-        //"Accestoken or status: args.data"
-        break;
-      case "extension.userSettingsChanged":
-        //"User settings changed!"
-        break;
-      default:
-    }
-  },
-  30000
-);
+    (async () => {
+      console.log("Initializing Trimble Connect Extension...");
 
-....
-....
+      try {
+        const mainMenuObject = {
+          title: "Test Extension App",
+          icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+          command: "main_nav_menu_clicked",
+          subMenus: [
+            {
+              title: "Sub Menu 1",
+              icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+              command: "submenu_1_clicked",
+            },
+            {
+              title: "Sub Menu 2",
+              icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+              command: "submenu_2_clicked",
+            },
+          ],
+        };
 
-// Updating the menu object.
-this.API.ui.setMenu("<mainMenuObject>:ExtensionMainMenu")
-// Where <mainMenuObject> is the menu object and ExtensionMainMenu is the object type which you can find it in the documentation.
+        const API = await Extensions.connect(
+          window.parent,
+          (event, args) => {
+            console.log("Event received:", event, args);
+          },
+          30000
+        );
 
-// Updating the active submenu.
-this.API.ui.setActiveMenuItem("<submenuCommand>:string");
+        console.log("Connected to API:", API);
 
-// Get the current project info
-this.API.project.getCurrentProject().then((projectInfo: ConnectProject) => {
-    //Current project info: projectInfo.
-});
+        // Set the menu
+        API.ui.setMenu(mainMenuObject);
+        console.log("Menu object set:", mainMenuObject);
 
-//Get the current user language info.
-this.API.user.getUserSettings().then((userSettings: UserSettings) => {
-    //Current user language: userSettings.language
-});
+        // Additional setup
+        API.project.getCurrentProject().then((projectInfo) => {
+          console.log("Project info:", projectInfo);
+        });
 
-//Updating the status message.
-this.API.extension.setStatusMessage("<statusMessage>:string");
+        API.user.getUserSettings().then((userSettings) => {
+          console.log("User settings:", userSettings);
+        });
+      } catch (error) {
+        console.error("Error initializing extension:", error);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <h1>Welcome to the Trimble Connect Extension</h1>
+</body>
+</html>
 
-//Request for the access token.
-this.API.extension.getPermission("accesstoken").then((accessToken: string) => {
-    //Current user access token or status: accessToken
-});
-
-const mainMenuObject = {
-  title: "Test extension app",
-  icon: "http://example.com/main_menu_icon.png",
-  command: "main_nav_menu_cliked",
-  subMenus: [
-    {
-      title: "Sub menu 1",
-      icon: "http://example.com/sub_menu_icon.png",
-      command: "submenu_1_clicked",
-    },
-    {
-      title: "Sub menu 2",
-      icon: "http://example.com/sub_menu_icon.png",
-      command: "submenu_2_clicked",
-    },
-  ],
-};
