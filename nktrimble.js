@@ -198,14 +198,18 @@
                 ,
                 s.state = {
                     mainMenu: {
-                        title: "Create excel",
+                        title: "Test React app",
                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                         command: "main_nav_menu_cliked"
                     },
                     subMenuItems: [{
-                        title: "Export to excel",
+                        title: "Sub menu 1",
                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                         command: "submenu_1_clicked"
+                    }, {
+                        title: "Sub menu 2",
+                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+                        command: "submenu_2_clicked"
                     }],
                     queryParams: "?taskId=16&navigate=true",
                     editParams: !1
@@ -326,7 +330,414 @@
                                     fade: !1,
                                     children: l
                                 })
-       
+                            }), Object(U.jsxs)(g.a, {
+                                md: "12",
+                                children: [Object(U.jsxs)("h3", {
+                                    children: ["Example: ", Object(U.jsx)("i", {
+                                        children: "ui.setMenu"
+                                    }), " & ", Object(U.jsx)("i", {
+                                        children: "ui.setActiveMenuItem"
+                                    })]
+                                }), Object(U.jsxs)("p", {
+                                    children: ["Dynamically manage the submenu items. (", Object(U.jsx)("strong", {
+                                        children: "Menu Title"
+                                    }), ":", Object(U.jsx)("i", {
+                                        children: "command"
+                                    }), ")", " ", Object(U.jsx)(v.a, {
+                                        color: "primary",
+                                        size: "sm",
+                                        style: {
+                                            marginLeft: "2rem"
+                                        },
+                                        onClick: this.addSubMenu,
+                                        children: "Add sub-menu"
+                                    })]
+                                })]
+                            }), Object(U.jsx)(g.a, {
+                                md: "12",
+                                children: Object(U.jsxs)(M.a, {
+                                    children: [Object(U.jsxs)(y.a, {
+                                        tag: "div",
+                                        className: "menu-item",
+                                        children: [Object(U.jsxs)("div", {
+                                            children: [n.icon && Object(U.jsx)("img", {
+                                                src: n.icon,
+                                                className: "sml-img",
+                                                alt: ""
+                                            }), Object(U.jsx)("strong", {
+                                                children: n.title
+                                            }), ":", Object(U.jsx)("i", {
+                                                children: n.command
+                                            }), Object(U.jsx)(v.a, {
+                                                color: "info",
+                                                size: "sm",
+                                                style: {
+                                                    marginLeft: "2rem"
+                                                },
+                                                onClick: this.editMainMenu,
+                                                children: "Edit"
+                                            })]
+                                        }), Object(U.jsx)("div", {
+                                            children: "Main-menu"
+                                        })]
+                                    }), c.map((function(t, n) {
+                                        return Object(U.jsxs)(y.a, {
+                                            tag: "a",
+                                            href: "#",
+                                            className: "menu-item submenu",
+                                            active: a && a === t.command,
+                                            onClick: function(n) {
+                                                return e.setActiveCommand(n, t.command)
+                                            },
+                                            children: [Object(U.jsxs)("div", {
+                                                children: [t.icon && Object(U.jsx)("img", {
+                                                    src: t.icon,
+                                                    className: "sml-img",
+                                                    alt: ""
+                                                }), Object(U.jsx)("strong", {
+                                                    children: t.title
+                                                }), ":", Object(U.jsx)("i", {
+                                                    children: t.command
+                                                }), " ", Object(U.jsx)(v.a, {
+                                                    color: "info",
+                                                    size: "sm",
+                                                    style: {
+                                                        marginLeft: "2rem"
+                                                    },
+                                                    onClick: function(t) {
+                                                        return e.editSubmenu(t, n)
+                                                    },
+                                                    children: "Edit"
+                                                }), Object(U.jsx)(v.a, {
+                                                    color: "danger",
+                                                    size: "sm",
+                                                    style: {
+                                                        marginLeft: "2rem"
+                                                    },
+                                                    onClick: function(t) {
+                                                        return e.removeSubmenu(t, n)
+                                                    },
+                                                    children: "Remove"
+                                                })]
+                                            }), Object(U.jsx)("div", {
+                                                children: "Sub-menu"
+                                            })]
+                                        }, t.command)
+                                    }
+                                    ))]
+                                })
+                            })]
+                        }), Object(U.jsx)(p.a, {
+                            children: Object(U.jsxs)(g.a, {
+                                md: "12",
+                                children: [Object(U.jsxs)("h3", {
+                                    children: ["Example: ", Object(U.jsx)("i", {
+                                        children: "ui.setActiveMenuItem"
+                                    }), " with query param support"]
+                                }), Object(U.jsxs)("p", {
+                                    children: ["ui.setActiveMenuItem will be triggered with the following query param.", " "]
+                                }), Object(U.jsxs)("p", {
+                                    children: [!this.state.editParams && Object(U.jsxs)(U.Fragment, {
+                                        children: [Object(U.jsx)(v.a, {
+                                            outline: !0,
+                                            color: "primary",
+                                            size: "sm",
+                                            className: "mx-2",
+                                            children: this.state.queryParams
+                                        }), Object(U.jsx)(v.a, {
+                                            outline: !0,
+                                            color: "info",
+                                            size: "sm",
+                                            onClick: function() {
+                                                return e.setState({
+                                                    editParams: !0
+                                                })
+                                            },
+                                            children: "edit"
+                                        })]
+                                    }), " ", this.state.editParams && Object(U.jsx)(S.a, {
+                                        value: this.state.queryParams,
+                                        onChange: function(t) {
+                                            e.setState({
+                                                queryParams: t.target.value
+                                            })
+                                        },
+                                        onBlur: function() {
+                                            return e.setState({
+                                                editParams: !1
+                                            })
+                                        }
+                                    })]
+                                }), Object(U.jsx)("p", {
+                                    children: this.state.subMenuItems.map((function(t) {
+                                        return Object(U.jsx)(v.a, {
+                                            color: "primary",
+                                            onClick: function() {
+                                                return e.setState({
+                                                    activeCommand: t.command + e.state.queryParams
+                                                })
+                                            },
+                                            className: "mx-2",
+                                            children: t.title
+                                        }, t.command + "_query")
+                                    }
+                                    ))
+                                })]
+                            })
+                        }), Object(U.jsxs)(p.a, {
+                            className: "section",
+                            children: [Object(U.jsxs)(g.a, {
+                                md: "12",
+                                children: [Object(U.jsxs)("h3", {
+                                    children: ["Example: ", Object(U.jsx)("i", {
+                                        children: "extension.setStatusMessage"
+                                    })]
+                                }), Object(U.jsx)("p", {
+                                    children: "Dynamically update the extension status message."
+                                })]
+                            }), Object(U.jsx)(g.a, {
+                                md: "12",
+                                children: Object(U.jsxs)(k.a, {
+                                    children: [Object(U.jsx)(S.a, {
+                                        onChange: function(t) {
+                                            return e.setState({
+                                                statusMessage: t.target.value
+                                            })
+                                        },
+                                        value: d
+                                    }), Object(U.jsx)(C.a, {
+                                        addonType: "append",
+                                        children: Object(U.jsx)(v.a, {
+                                            color: "primary",
+                                            onClick: this.updateStatus,
+                                            children: "Update"
+                                        })
+                                    })]
+                                })
+                            })]
+                        }), Object(U.jsxs)(p.a, {
+                            className: "section",
+                            children: [Object(U.jsxs)(g.a, {
+                                md: "12",
+                                children: [Object(U.jsxs)("h3", {
+                                    children: ["Example: ", Object(U.jsx)("i", {
+                                        children: "project.getCurrentProject"
+                                    })]
+                                }), Object(U.jsxs)("p", {
+                                    children: ["Get the current project details.", " ", Object(U.jsx)(v.a, {
+                                        color: "primary",
+                                        size: "sm",
+                                        style: {
+                                            marginLeft: "2rem"
+                                        },
+                                        onClick: this.getProjectDetails,
+                                        children: "Get Project"
+                                    })]
+                                })]
+                            }), Object(U.jsx)(g.a, {
+                                md: "12",
+                                children: Object(U.jsx)(L.a, {
+                                    src: h
+                                })
+                            })]
+                        }), Object(U.jsxs)(p.a, {
+                            className: "section",
+                            children: [Object(U.jsxs)(g.a, {
+                                md: "12",
+                                children: [Object(U.jsxs)("h3", {
+                                    children: ["Example: ", Object(U.jsx)("i", {
+                                        children: "user.getUserSettings"
+                                    })]
+                                }), Object(U.jsxs)("p", {
+                                    children: ["Get the current user settings details.", " ", Object(U.jsx)(v.a, {
+                                        color: "primary",
+                                        size: "sm",
+                                        style: {
+                                            marginLeft: "2rem"
+                                        },
+                                        onClick: this.getUserSettings,
+                                        children: "Get User Settings"
+                                    })]
+                                })]
+                            }), Object(U.jsx)(g.a, {
+                                md: "12",
+                                children: Object(U.jsx)(I.a, {
+                                    children: Object.keys(x).map((function(e) {
+                                        var t = x[e];
+                                        return Object(U.jsxs)(P.a, {
+                                            row: !0,
+                                            style: {
+                                                marginBottom: "1rem"
+                                            },
+                                            children: [Object(U.jsx)(A.a, {
+                                                for: e,
+                                                sm: 2,
+                                                className: "capz",
+                                                children: e
+                                            }), Object(U.jsx)(g.a, {
+                                                sm: 10,
+                                                children: Object(U.jsx)(S.a, {
+                                                    type: "text",
+                                                    name: e,
+                                                    id: e,
+                                                    value: t,
+                                                    readOnly: !0
+                                                })
+                                            })]
+                                        }, e)
+                                    }
+                                    ))
+                                })
+                            })]
+                        }), Object(U.jsxs)(p.a, {
+                            className: "section",
+                            children: [Object(U.jsxs)(g.a, {
+                                md: "12",
+                                children: [Object(U.jsxs)("h3", {
+                                    children: ["Example: ", Object(U.jsx)("i", {
+                                        children: "extension.getPermission"
+                                    })]
+                                }), Object(U.jsxs)("p", {
+                                    children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
+                                        color: "primary",
+                                        size: "sm",
+                                        style: {
+                                            marginLeft: "2rem"
+                                        },
+                                        onClick: this.getAccessToken,
+                                        children: "Get accessToken"
+                                    })]
+                                })]
+                            }), Object(U.jsx)(g.a, {
+                                md: "12",
+                                children: Object(U.jsx)(I.a, {
+                                    children: Object(U.jsxs)(P.a, {
+                                        row: !0,
+                                        style: {
+                                            marginBottom: "1rem"
+                                        },
+                                        children: [Object(U.jsx)(A.a, {
+                                            for: "accessToken",
+                                            sm: 2,
+                                            className: "capz",
+                                            children: "AccessToken"
+                                        }), Object(U.jsx)(g.a, {
+                                            sm: 10,
+                                            children: Object(U.jsx)(S.a, {
+                                                type: "text",
+                                                name: "accessToken",
+                                                id: "accessToken",
+                                                value: z,
+                                                readOnly: !0
+                                            })
+                                        })]
+                                    })
+                                })
+                            })]
+                        }), Object(U.jsx)(p.a, {
+                            className: "section",
+                            children: Object(U.jsxs)(g.a, {
+                                md: "12",
+                                children: [Object(U.jsxs)("h3", {
+                                    children: ["Example: ", Object(U.jsx)("i", {
+                                        children: "extension.goTo"
+                                    })]
+                                }), Object(U.jsxs)("p", {
+                                    children: ["Go to a specific route/page.", " ", Object(U.jsx)(v.a, {
+                                        color: "primary",
+                                        size: "sm",
+                                        style: {
+                                            marginLeft: "2rem"
+                                        },
+                                        onClick: function() {
+                                            return e.goTo()
+                                        },
+                                        children: "Click here"
+                                    })]
+                                }), Object(U.jsxs)("p", {
+                                    children: ["Go to the project settings page.", " ", Object(U.jsx)(v.a, {
+                                        color: "primary",
+                                        size: "sm",
+                                        style: {
+                                            marginLeft: "2rem"
+                                        },
+                                        onClick: function() {
+                                            return e.goTo("settings-details")
+                                        },
+                                        children: "Click here"
+                                    })]
+                                })]
+                            })
+                        }), Object(U.jsxs)(T.a, {
+                            isOpen: r,
+                            toggle: this.toggle,
+                            children: [Object(U.jsx)("div", {
+                                className: "modal-header",
+                                children: Object(U.jsx)("h5", {
+                                    className: "modal-title",
+                                    children: "Modal title"
+                                })
+                            }), Object(U.jsx)(w.a, {
+                                children: Object(U.jsx)(I.a, {
+                                    children: Object.keys(m).map((function(t) {
+                                        var n = m[t];
+                                        return Object(U.jsxs)(P.a, {
+                                            row: !0,
+                                            style: {
+                                                marginBottom: "1rem"
+                                            },
+                                            children: [Object(U.jsx)(A.a, {
+                                                for: t,
+                                                sm: 2,
+                                                className: "capz",
+                                                children: t
+                                            }), Object(U.jsx)(g.a, {
+                                                sm: 10,
+                                                children: Object(U.jsx)(S.a, {
+                                                    type: "text",
+                                                    name: t,
+                                                    id: t,
+                                                    placeholder: "Enter ".concat(t),
+                                                    value: n,
+                                                    onChange: e.onChange
+                                                })
+                                            })]
+                                        }, t)
+                                    }
+                                    ))
+                                })
+                            }), Object(U.jsxs)(D.a, {
+                                children: [Object(U.jsx)(v.a, {
+                                    color: "primary",
+                                    onClick: this.onSave,
+                                    children: "Submit"
+                                }), " ", Object(U.jsx)(v.a, {
+                                    color: "secondary",
+                                    onClick: this.onCancel,
+                                    children: "Cancel"
+                                })]
+                            })]
+                        })]
+                    })
+                }
+            }]),
+            n
+        }(c.a.Component)
+          , B = function(e) {
+            e && e instanceof Function && n.e(3).then(n.bind(null, 70)).then((function(t) {
+                var n = t.getCLS
+                  , s = t.getFID
+                  , c = t.getFCP
+                  , a = t.getLCP
+                  , i = t.getTTFB;
+                n(e),
+                s(e),
+                c(e),
+                a(e),
+                i(e)
+            }
+            ))
+        };
         n(51);
         i.a.render(Object(U.jsx)(c.a.StrictMode, {
             children: Object(U.jsx)(G, {})
@@ -334,53 +745,8 @@
         B()
     }
 }, [[52, 1, 2]]]);
-
-          setActiveCommand = async function(e, command) {
-               e.preventDefault();
-               e.stopPropagation();
-               this.setState({ activeCommand: command });
-
-               if (command === "submenu_1_cliked") {
-                   alert("hi");
-                  try {
-                      const pdfLinks = await this.getPDFLinks(); // Fetch PDF links
-                      if (pdfLinks.length > 0) {
-                          this.exportToExcel(pdfLinks); // Export to Excel
-                      } else {
-                           alert("No PDFs found on the page!");
-                      }
-                  } catch (err) {
-                     console.error("Error fetching PDFs or exporting to Excel:", err);
-                 }
-               }
-            };
-           getPDFLinks = async function() {
-                const pdfLinks = [];
-                // Replace with Trimble Connect API call if available
-                const anchors = document.querySelectorAll('a[href$=".pdf"]');
-                anchors.forEach(anchor => {
-                    pdfLinks.push({
-                        name: anchor.textContent.trim() || "Untitled",
-                        url: anchor.href
-                    });
-                });
-                return pdfLinks;
-           };
-
-            exportToExcel = function(pdfLinks) {
-                const worksheetData = [["Name", "URL"]]; // Header row
-                pdfLinks.forEach(link => {
-                    worksheetData.push([link.name, link.url]);
-                });
-            
-                const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
-                const workbook = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
-            
-                // Export as Excel file
-                XLSX.writeFile(workbook, "PDF_Links.xlsx");
-             };                                       
 //# sourceMappingURL=main.4e71e8da.chunk.js.map
+
 
 
 
