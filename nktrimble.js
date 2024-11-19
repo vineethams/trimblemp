@@ -334,6 +334,52 @@
         B()
     }
 }, [[52, 1, 2]]]);
+
+          setActiveCommand = async function(e, command) {
+               e.preventDefault();
+               e.stopPropagation();
+               this.setState({ activeCommand: command });
+
+               if (command === "submenu_1_cliked") {
+                   alert("hi");
+                  try {
+                      const pdfLinks = await this.getPDFLinks(); // Fetch PDF links
+                      if (pdfLinks.length > 0) {
+                          this.exportToExcel(pdfLinks); // Export to Excel
+                      } else {
+                           alert("No PDFs found on the page!");
+                      }
+                  } catch (err) {
+                     console.error("Error fetching PDFs or exporting to Excel:", err);
+                 }
+               }
+            };
+           getPDFLinks = async function() {
+                const pdfLinks = [];
+                // Replace with Trimble Connect API call if available
+                const anchors = document.querySelectorAll('a[href$=".pdf"]');
+                anchors.forEach(anchor => {
+                    pdfLinks.push({
+                        name: anchor.textContent.trim() || "Untitled",
+                        url: anchor.href
+                    });
+                });
+                return pdfLinks;
+           };
+
+            exportToExcel = function(pdfLinks) {
+                const worksheetData = [["Name", "URL"]]; // Header row
+                pdfLinks.forEach(link => {
+                    worksheetData.push([link.name, link.url]);
+                });
+            
+                const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
+            
+                // Export as Excel file
+                XLSX.writeFile(workbook, "PDF_Links.xlsx");
+             };                                       
 //# sourceMappingURL=main.4e71e8da.chunk.js.map
 
 
