@@ -1,7 +1,7 @@
 {
     "icon": "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
     "title": "React example",
-    "url": "https://vineethams.github.io/trimblemp/index.html",
+    "url": "https://vineethams.github.io/trimblemp",
     "description": "Create Excel",
     "configCommand": "do_config",
     "enabled": true
