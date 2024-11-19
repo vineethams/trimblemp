@@ -748,6 +748,5 @@
 //# sourceMappingURL=main.4e71e8da.chunk.js.map
 
 
-// Render the app
-ReactDOM.render(<MyApp />, document.getElementById("root"));
+
 </script>
