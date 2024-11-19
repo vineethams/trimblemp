@@ -3,6 +3,11 @@
     "title": "React example",
     "url": "https://vineethams.github.io/trimblemp/trim.html",
     "description": "Create Excel",
+    "ui": {
+    "mainMenu": {
+      "title": "Test React App",
+      "icon": "https://via.placeholder.com/24" // Replace with your icon URL
+    }
     "configCommand": "do_config",
     "enabled": true
   }
