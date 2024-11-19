@@ -198,18 +198,14 @@
                 ,
                 s.state = {
                     mainMenu: {
-                        title: "Test app",
+                        title: "Create excel",
                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                         command: "main_nav_menu_cliked"
                     },
                     subMenuItems: [{
-                        title: "Sub menu 1",
+                        title: "Export to excel",
                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                         command: "submenu_1_clicked"
-                    }, {
-                        title: "Sub menu 2",
-                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                        command: "submenu_2_clicked"
                     }],
                     queryParams: "?taskId=16&navigate=true",
                     editParams: !1
