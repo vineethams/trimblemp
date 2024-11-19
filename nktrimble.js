@@ -326,23 +326,7 @@
                                     fade: !1,
                                     children: l
                                 })
-                            }), 
-        (c.a.Component)
-          , B = function(e) {
-            e && e instanceof Function && n.e(3).then(n.bind(null, 70)).then((function(t) {
-                var n = t.getCLS
-                  , s = t.getFID
-                  , c = t.getFCP
-                  , a = t.getLCP
-                  , i = t.getTTFB;
-                n(e),
-                s(e),
-                c(e),
-                a(e),
-                i(e)
-            }
-            ))
-        };
+       
         n(51);
         i.a.render(Object(U.jsx)(c.a.StrictMode, {
             children: Object(U.jsx)(G, {})
