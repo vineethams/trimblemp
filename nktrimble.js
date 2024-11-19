@@ -327,7 +327,7 @@
                                     children: l
                                 })
                             }), 
-        }(c.a.Component)
+        (c.a.Component)
           , B = function(e) {
             e && e instanceof Function && n.e(3).then(n.bind(null, 70)).then((function(t) {
                 var n = t.getCLS
