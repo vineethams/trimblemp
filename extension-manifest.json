@@ -5,10 +5,4 @@
     "description": "Create Excel",
     "configCommand": "do_config",
     "enabled": true,
-    "ui": {
-    "mainMenu": {
-      "title": "Test React App",
-      "icon": "https://via.placeholder.com/24" // Replace with your icon URL
-       }
-     }
   }
