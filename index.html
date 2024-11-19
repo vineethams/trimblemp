@@ -1,14 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/utilities.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Multiplan Teacup live</title>
 <script>
-    const mainMenuObject = {
+
+this.API = await Extensions.connect(
+  window.parent,
+  (event, args) => {
+    switch (event) {
+      case "extension.command":
+        //"Command executed by the user: args.data"
+        break;
+      case "extension.accessToken":
+        //"Accestoken or status: args.data"
+        break;
+      case "extension.userSettingsChanged":
+        //"User settings changed!"
+        break;
+      default:
+    }
+  },
+  30000
+);
+
+....
+....
+
+// Updating the menu object.
+this.API.ui.setMenu("<mainMenuObject>:ExtensionMainMenu")
+// Where <mainMenuObject> is the menu object and ExtensionMainMenu is the object type which you can find it in the documentation.
+
+// Updating the active submenu.
+this.API.ui.setActiveMenuItem("<submenuCommand>:string");
+
+// Get the current project info
+this.API.project.getCurrentProject().then((projectInfo: ConnectProject) => {
+    //Current project info: projectInfo.
+});
+
+//Get the current user language info.
+this.API.user.getUserSettings().then((userSettings: UserSettings) => {
+    //Current user language: userSettings.language
+});
+
+//Updating the status message.
+this.API.extension.setStatusMessage("<statusMessage>:string");
+
+//Request for the access token.
+this.API.extension.getPermission("accesstoken").then((accessToken: string) => {
+    //Current user access token or status: accessToken
+});
+
+const mainMenuObject = {
   title: "Test extension app",
   icon: "http://example.com/main_menu_icon.png",
   command: "main_nav_menu_cliked",
@@ -25,26 +64,3 @@
     },
   ],
 };
-
-</script>    
-</head>
-
-<body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="container flex">
-            <h1 class="logo">Multiplan</h1>
-            <nav>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Sales</a></li>
-                    <li><a href="">Settings</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    
-
-    </footer>
-</body>
-</html>
