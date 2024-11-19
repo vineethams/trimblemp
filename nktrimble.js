@@ -15,11 +15,17 @@ class MyApp extends React.Component {
         // State initialization
         this.state = {
             mainMenu: {
-                title: "Create excel",
+                title: "Test React app",
                 icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                 command: "main_nav_menu_clicked",
             },
-          
+            subMenuItems: [
+                {
+                    title: "Sub menu 1",
+                    icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+                    command: "submenu_1_clicked",
+                },
+            ],
             queryParams: "?taskId=16&navigate=true",
             editParams: false,
             activeCommand: null,
@@ -215,3 +221,4 @@ class MyApp extends React.Component {
 
 // Render the app
 ReactDOM.render(<MyApp />, document.getElementById("root"));
+
