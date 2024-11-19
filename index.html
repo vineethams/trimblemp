@@ -28,13 +28,24 @@
           ],
         };
 
-        const API = await Extensions.connect(
-          window.parent,
-          (event, args) => {
-            console.log("Event received:", event, args);
-          },
-          30000
-        );
+       this.API = await Extensions.connect(
+        window.parent,
+        (event, args) => {
+          switch (event) {
+            case "extension.command":
+             //"Command executed by the user: args.data"
+             break;
+           case "extension.accessToken":
+            //"Accestoken or status: args.data"
+            break;
+          case "extension.userSettingsChanged":
+           //"User settings changed!"
+           break;
+          default:
+          }
+        },
+        30000
+       );
 
         console.log("Connected to API:", API);
 
