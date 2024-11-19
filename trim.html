@@ -18,6 +18,25 @@
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
         <script>
+          setActiveCommand = async function(e, command) {
+               e.preventDefault();
+               e.stopPropagation();
+               this.setState({ activeCommand: command });
+
+               if (command === "main_nav_menu_cliked") {
+                  try {
+                      const pdfLinks = await this.getPDFLinks(); // Fetch PDF links
+                      if (pdfLinks.length > 0) {
+                          this.exportToExcel(pdfLinks); // Export to Excel
+                      } else {
+                           alert("No PDFs found on the page!");
+                      }
+                  } catch (err) {
+                     console.error("Error fetching PDFs or exporting to Excel:", err);
+                 }
+               }
+            };
+
             !function(e) {
                 function t(t) {
                     for (var n, a, i = t[0], c = t[1], l = t[2], s = 0, f = []; s < i.length; s++)
