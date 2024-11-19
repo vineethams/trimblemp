@@ -198,7 +198,7 @@
                 ,
                 s.state = {
                     mainMenu: {
-                        title: "Test React app",
+                        title: "Test app",
                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                         command: "main_nav_menu_cliked"
                     },
