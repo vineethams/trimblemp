@@ -1,10 +1,8 @@
 {
-  "manifest_version": 1,
-  "id": "create-pdf-extension",  // Unique identifier for your extension
-  "version": "1.0.0",           // Extension version
-  "name": "Create PDF Extension", // Name displayed in the Trimble Connect UI
-  "description": "An extension to create PDFs from project data.", // Brief description
-  "icon": "http://example.com/extension_icon.png", // URL to your extension's icon
-  "entry_point": "http://example.com/extension-entry.html", // URL to your extension's entry file
-  }
+  "icon": "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+  "title": "React example",
+  "url": "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/index.html",
+  "description": "Test react extension",
+  "configCommand": "do_config",
+  "enabled": true
 }
