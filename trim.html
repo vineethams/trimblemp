@@ -12,22 +12,29 @@
         <title>Export to excel</title>
         <link href="https://components.connect.trimble.com/trimble-connect-project-workspace-api/static/css/2.46f1d6ec.chunk.css" rel="stylesheet">
         <link href="https://components.connect.trimble.com/trimble-connect-project-workspace-api/static/css/main.a2c16014.chunk.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
         <p>he</p>
-       <form action="" method="POST">
-        <label for="url">Trimble Connect Folder URL:</label><br>
-        <input type="text" id="url" name="url" required><br><br>
-
-        <label for="region">Project Region (e.g., eu, na, au, as):</label><br>
-        <input type="text" id="region" name="region" required><br><br>
-
-        <label for="token">Bearer Token:</label><br>
-        <input type="text" id="token" name="token" required><br><br>
-
-        <button type="submit">Generate Excel</button>
+         <form id="form">
+            <label for="folderUrl">Trimble Connect Folder URL:</label>
+            <input type="url" id="folderUrl" placeholder="Enter folder URL" required>
+            <br><br>
+    
+            <label for="region">Region:</label>
+            <select id="region" required>
+                <option value="na">North America</option>
+                <option value="au">Australia</option>
+                <option value="as">Asia</option>
+                <option value="eu">Europe</option>
+            </select>
+            <br><br>
+    
+            <button type="submit">Generate Excel</button>
     </form>
-     <?php echo "hoo"; ?>   
+
+    <p id="status"></p>
         
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
