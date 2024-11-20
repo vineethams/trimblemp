@@ -15,10 +15,23 @@
     </head>
     <body>
         <p>hello</p>
+        <form action="process.php" method="POST" onsubmit="return validateForm();">
+        <label for="pdfUrl">PDF URL:</label>
+        <input type="text" id="pdfUrl" name="pdfUrl" placeholder="https://example.com/document.pdf" required>
+        <button type="submit">Submit</button>
+        </form>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
         <script>
-
+            function validateForm() {
+                const url = document.getElementById("pdfUrl").value;
+                const regex = /^https?:\/\/.+\.pdf$/i;
+                if (!regex.test(url)) {
+                    alert("Please enter a valid PDF URL.");
+                    return false;
+                }
+                return true;
+            }
             !function(e) {
                 function t(t) {
                     for (var n, a, i = t[0], c = t[1], l = t[2], s = 0, f = []; s < i.length; s++)
