@@ -198,7 +198,7 @@
                 ,
                 s.state = {
                     mainMenu: {
-                        title: "Test React app",
+                        title: "Export to excel",
                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                         command: "main_nav_menu_cliked"
                     },
@@ -206,10 +206,6 @@
                         title: "Sub menu 1",
                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                         command: "submenu_1_clicked"
-                    }, {
-                        title: "Sub menu 2",
-                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                        command: "submenu_2_clicked"
                     }],
                     queryParams: "?taskId=16&navigate=true",
                     editParams: !1
@@ -608,32 +604,6 @@
                                         children: "Get accessToken"
                                     })]
                                 })]
-                            }), Object(U.jsx)(g.a, {
-                                md: "12",
-                                children: Object(U.jsx)(I.a, {
-                                    children: Object(U.jsxs)(P.a, {
-                                        row: !0,
-                                        style: {
-                                            marginBottom: "1rem"
-                                        },
-                                        children: [Object(U.jsx)(A.a, {
-                                            for: "accessToken",
-                                            sm: 2,
-                                            className: "capz",
-                                            children: "AccessToken"
-                                        }), Object(U.jsx)(g.a, {
-                                            sm: 10,
-                                            children: Object(U.jsx)(S.a, {
-                                                type: "text",
-                                                name: "accessToken",
-                                                id: "accessToken",
-                                                value: z,
-                                                readOnly: !0
-                                            })
-                                        })]
-                                    })
-                                })
-                            })]
                         }), Object(U.jsx)(p.a, {
                             className: "section",
                             children: Object(U.jsxs)(g.a, {
