@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>hello there all</p>
+        <p>hello alll</p>
          <form id="form">
             <label style="margin-left:20px;" for="folderUrl">Trimble Connect Folder URL:</label>
             <input style="margin-left:20px;width:500px;" type="url" id="folderUrl" placeholder="Enter folder URL" required>
@@ -298,17 +298,89 @@
                         }), document.getElementById("root")),
                         B()
                     }
-                }, [[52, 1, 2]]]);
-               const fetchAccessToken = async () => {
-                    try {
-                        await this.getAccessToken(); 
-                        const accessToken = this.state.accessToken;
-                        console.log('Access Token:', accessToken);
-                    } catch (error) {
-                        console.error('Error fetching access token:', error);
-                    }
-                }
 
+                    
+                }, [[52, 1, 2]]]);
+
+
+                document.getElementById("form").addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    
+                    const folderUrl = document.getElementById("folderUrl").value;
+                    const region = document.getElementById("region").value;
+                    const bearerToken = N; 
+            
+        
+                    document.getElementById("status").innerText = "Fetching PDF links...";
+        
+                    try {
+                        // Parse folder ID
+                        const urlParts = new URL(folderUrl);
+                        const pathParts = urlParts.pathname.split("/");
+                        const folderId = pathParts[pathParts.length - 1];
+        
+                        // Determine API URL
+                        const baseUrl = {
+                            na: "https://app.connect.trimble.com/tc/api/2.0/folders/",
+                            au: "https://app32.connect.trimble.com/tc/api/2.0/folders/",
+                            as: "https://app31.connect.trimble.com/tc/api/2.0/folders/",
+                            eu: "https://app21.connect.trimble.com/tc/api/2.0/folders/"
+                        }[region];
+        
+                        const apiUrl = `${baseUrl}${folderId}/items`;
+        
+                        // Fetch folder contents
+                        const response = await axios.get(apiUrl, {
+                            headers: {
+                                Authorization: `Bearer ${bearerToken}`
+                            }
+                        });
+        
+                        const pdfFiles = [];
+                        const items = response.data.items || response.data;
+        
+                        items.forEach(item => {
+                            if (item.type === "FILE" && item.name.toLowerCase().endsWith(".pdf")) {
+                                pdfFiles.push({
+                                    name: item.name,
+                                    url: item.id
+                                });
+                            }
+                        });
+        
+                        if (pdfFiles.length === 0) {
+                            document.getElementById("status").innerText = "No PDF files found.";
+                            return;
+                        }
+        
+                        // Generate Excel
+                        const workbook = XLSX.utils.book_new();
+                        workbook.Props = { Title: "Trimble PDF Links" };
+        
+                        const sheetData = [["File Name", "Link"]];
+                        const projectId = pathParts[pathParts.indexOf("projects") + 1];
+        
+                        pdfFiles.forEach(pdf => {
+                            const link = `https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}`;
+                            sheetData.push([pdf.name, link]);
+                        });
+        
+                        const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
+                        XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
+        
+                        const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+                        const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+                        const link = document.createElement("a");
+                        link.href = URL.createObjectURL(blob);
+                        link.download = "TrimblePdf_links.xlsx";
+                        link.click();
+        
+                        document.getElementById("status").innerText = "Excel file generated successfully.";
+                    } catch (error) {
+                        console.error("Error fetching or processing data:", error);
+                        document.getElementById("status").innerText = "Failed to retrieve or process data.";
+                    }
+                });
                 
             !function(e) {
                 function t(t) {
@@ -474,84 +546,7 @@
                 var p = c;
                 r()
 
-                    document.getElementById("form").addEventListener("submit", async function (e) {
-                    e.preventDefault();
-                    
-                    const folderUrl = document.getElementById("folderUrl").value;
-                    const region = document.getElementById("region").value;
-                    const bearerToken = N; 
-            
-        
-                    document.getElementById("status").innerText = "Fetching PDF links...";
-        
-                    try {
-                        // Parse folder ID
-                        const urlParts = new URL(folderUrl);
-                        const pathParts = urlParts.pathname.split("/");
-                        const folderId = pathParts[pathParts.length - 1];
-        
-                        // Determine API URL
-                        const baseUrl = {
-                            na: "https://app.connect.trimble.com/tc/api/2.0/folders/",
-                            au: "https://app32.connect.trimble.com/tc/api/2.0/folders/",
-                            as: "https://app31.connect.trimble.com/tc/api/2.0/folders/",
-                            eu: "https://app21.connect.trimble.com/tc/api/2.0/folders/"
-                        }[region];
-        
-                        const apiUrl = `${baseUrl}${folderId}/items`;
-        
-                        // Fetch folder contents
-                        const response = await axios.get(apiUrl, {
-                            headers: {
-                                Authorization: `Bearer ${bearerToken}`
-                            }
-                        });
-        
-                        const pdfFiles = [];
-                        const items = response.data.items || response.data;
-        
-                        items.forEach(item => {
-                            if (item.type === "FILE" && item.name.toLowerCase().endsWith(".pdf")) {
-                                pdfFiles.push({
-                                    name: item.name,
-                                    url: item.id
-                                });
-                            }
-                        });
-        
-                        if (pdfFiles.length === 0) {
-                            document.getElementById("status").innerText = "No PDF files found.";
-                            return;
-                        }
-        
-                        // Generate Excel
-                        const workbook = XLSX.utils.book_new();
-                        workbook.Props = { Title: "Trimble PDF Links" };
-        
-                        const sheetData = [["File Name", "Link"]];
-                        const projectId = pathParts[pathParts.indexOf("projects") + 1];
-        
-                        pdfFiles.forEach(pdf => {
-                            const link = `https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}`;
-                            sheetData.push([pdf.name, link]);
-                        });
-        
-                        const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
-                        XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
-        
-                        const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-                        const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
-                        const link = document.createElement("a");
-                        link.href = URL.createObjectURL(blob);
-                        link.download = "TrimblePdf_links.xlsx";
-                        link.click();
-        
-                        document.getElementById("status").innerText = "Excel file generated successfully.";
-                    } catch (error) {
-                        console.error("Error fetching or processing data:", error);
-                        document.getElementById("status").innerText = "Failed to retrieve or process data.";
-                    }
-                });
+                   
            
             }([])
         </script>
