@@ -41,53 +41,6 @@
 
 
         <script>
-          
-            
-           
-                            
-                import * as WorkspaceAPI from "trimble-connect-workspace-api";
-                    
-                let token; // This will hold the access token
-                    
-                async function initializeWorkspaceAPI() {
-                        try {
-                            // Connect to the Trimble Connect workspace
-                            const API = await WorkspaceAPI.connect(
-                                window.parent,
-                                (event, args) => {
-                                    switch (event) {
-                                        case "extension.command":
-                                            console.log("Command executed by the user:", args.data);
-                                            break;
-                                        case "extension.accessToken":
-                                            console.log("Access token or status:", args.data);
-                                            break;
-                                        case "extension.userSettingsChanged":
-                                            console.log("User settings changed!");
-                                            break;
-                                        default:
-                                            console.log("Unknown event:", event);
-                                    }
-                                },
-                                30000 // Timeout in milliseconds
-                            );
-                    
-                            // Store the API instance globally if needed
-                            window.API = API;
-                    
-                            // Request the access token
-                            token = await API.extension.getPermission("accesstoken");
-                            console.log("Access Token:", token);
-                    
-                            // You can now use the token variable in other parts of your code
-                        } catch (error) {
-                            console.error("Failed to initialize WorkspaceAPI or fetch access token:", error);
-                        }
-                    }
-            
-            // Call the function to initialize and fetch the token
-            initializeWorkspaceAPI();
-
            
             !function(e) {
                 function t(t) {
