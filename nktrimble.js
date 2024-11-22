@@ -61,139 +61,13 @@
                     })
                 }
                 ,
-                s.removeSubmenu = function(e, t) {
-                    e.preventDefault(),
-                    e.stopPropagation();
-                    var n = Object(d.a)(s.state.subMenuItems);
-                    n.splice(t, 1),
-                    s.setState({
-                        subMenuItems: Object(d.a)(n)
-                    })
-                }
-                ,
-                s.toggle = function() {
-                    return s.setState({
-                        modal: !s.state.modal
-                    })
-                }
-                ,
-                s.editSubmenu = function(e, t) {
-                    e.preventDefault(),
-                    e.stopPropagation();
-                    var n = Object(j.a)({}, s.state.subMenuItems[t]);
-                    s.setState({
-                        modal: !0,
-                        editMenu: "subMenuItems",
-                        editIndex: t,
-                        formData: n
-                    })
-                }
-                ,
-                s.editMainMenu = function() {
-                    var e = Object(j.a)({}, s.state.mainMenu);
-                    s.setState({
-                        modal: !0,
-                        editMenu: "mainMenu",
-                        formData: e
-                    })
-                }
-                ,
-                s.onChange = function(e) {
-                    s.setState({
-                        formData: Object(j.a)(Object(j.a)({}, s.state.formData), {}, Object(l.a)({}, e.target.name, e.target.value))
-                    })
-                }
-                ,
-                s.addSubMenu = function(e) {
-                    e.preventDefault(),
-                    e.stopPropagation(),
-                    s.onCancel(),
-                    s.setState({
-                        modal: !0,
-                        formData: {
-                            title: "",
-                            icon: "",
-                            command: ""
-                        }
-                    })
-                }
-                ,
-                s.onSave = function() {
-                    var e = s.state
-                      , t = e.formData
-                      , n = e.editMenu
-                      , c = e.editIndex
-                      , a = void 0 === c ? 0 : c
-                      , i = e.subMenuItems
-                      , r = void 0 === i ? [] : i;
-                    if (t) {
-                        if ("mainMenu" === n)
-                            s.setState({
-                                mainMenu: Object(j.a)({}, t)
-                            });
-                        else if ("subMenuItems" === n) {
-                            if (0 === r.length)
-                                return;
-                            var o = r.map((function(e, n) {
-                                return n === a ? Object(j.a)({}, t) : e
-                            }
-                            ));
-                            s.setState({
-                                subMenuItems: Object(d.a)(o)
-                            })
-                        } else
-                            s.setState({
-                                subMenuItems: [].concat(Object(d.a)(r), [Object(j.a)({}, t)])
-                            });
-                        s.onCancel()
-                    }
-                }
-                ,
-                s.onCancel = function() {
-                    s.setState({
-                        modal: !1,
-                        editMenu: void 0,
-                        formData: void 0,
-                        editIndex: void 0
-                    })
-                }
-                ,
-                s.updateStatus = function() {
-                    var e = s.state.statusMessage
-                      , t = void 0 === e ? "" : e;
-                    s.API && s.API.extension.setStatusMessage(t)
-                }
-                ,
-                s.getProjectDetails = function() {
-                    s.API && s.API.project.getCurrentProject().then((function(e) {
-                        return s.setState({
-                            projectInfo: e
-                        })
-                    }
-                    ))
-                }
-                ,
-                s.getUserSettings = function() {
-                    s.API && s.API.user.getUserSettings().then((function(e) {
-                        return s.setState({
-                            userSettings: e
-                        })
-                    }
-                    ))
-                }
-                ,
-                s.getAccessToken = function() {
+                 s.getAccessToken = function() {
                     s.API && s.API.extension.getPermission("accesstoken").then((function(e) {
                         return s.setState({
                             accessToken: e
                         })
                     }
                     ))
-                }
-                ,
-                s.goTo = function() {
-                    var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "settings-extensions";
-                    s.API && s.API.extension.goTo(e)
                 }
                 ,
                 s.state = {
@@ -288,7 +162,7 @@
                         this.API && this.API.ui.setActiveMenuItem(this.state.activeCommand)
                     }
                 }
-            }, {
+            },{
                 key: "render",
                 value: function() {
                     var e = this
@@ -310,409 +184,50 @@
                       , x = void 0 === b ? {} : b
                       , N = t.accessToken
                       , z = void 0 === N ? "" : N;
-                    return Object(U.jsxs)(O.a, {
-                        children: [Object(U.jsxs)(p.a, {
-                            className: "section",
-                            children: [l && Object(U.jsx)(g.a, {
-                                md: "12",
-                                children: Object(U.jsx)(f.a, {
-                                    color: "success",
-                                    isOpen: !!l,
-                                    toggle: function() {
-                                        return e.setState({
-                                            alertMessage: void 0
-                                        })
-                                    },
-                                    fade: !1,
-                                    children: l
-                                })
-                            }), Object(U.jsxs)(g.a, {
-                                md: "12",
-                                children: [Object(U.jsxs)("h3", {
-                                    children: ["Example: ", Object(U.jsx)("i", {
-                                        children: "ui.setMenu"
-                                    }), " & ", Object(U.jsx)("i", {
-                                        children: "ui.setActiveMenuItem"
-                                    })]
-                                }), Object(U.jsxs)("p", {
-                                    children: ["Dynamically manage the submenu items. (", Object(U.jsx)("strong", {
-                                        children: "Menu Title"
-                                    }), ":", Object(U.jsx)("i", {
-                                        children: "command"
-                                    }), ")", " ", Object(U.jsx)(v.a, {
-                                        color: "primary",
-                                        size: "sm",
-                                        style: {
-                                            marginLeft: "2rem"
-                                        },
-                                        onClick: this.addSubMenu,
-                                        children: "Add sub-menu"
-                                    })]
+                    return  Object(U.jsxs)(p.a, {
+                        className: "section",
+                        children: [Object(U.jsxs)(g.a, {
+                            md: "12",
+                            children: [Object(U.jsxs)("h3", {
+                                children: ["Example: ", Object(U.jsx)("i", {
+                                    children: "extension.getPermission"
                                 })]
-                            }), Object(U.jsx)(g.a, {
-                                md: "12",
-                                children: Object(U.jsxs)(M.a, {
-                                    children: [Object(U.jsxs)(y.a, {
-                                        tag: "div",
-                                        className: "menu-item",
-                                        children: [Object(U.jsxs)("div", {
-                                            children: [n.icon && Object(U.jsx)("img", {
-                                                src: n.icon,
-                                                className: "sml-img",
-                                                alt: ""
-                                            }), Object(U.jsx)("strong", {
-                                                children: n.title
-                                            }), ":", Object(U.jsx)("i", {
-                                                children: n.command
-                                            }), Object(U.jsx)(v.a, {
-                                                color: "info",
-                                                size: "sm",
-                                                style: {
-                                                    marginLeft: "2rem"
-                                                },
-                                                onClick: this.editMainMenu,
-                                                children: "Edit"
-                                            })]
-                                        }), Object(U.jsx)("div", {
-                                            children: "Main-menu"
-                                        })]
-                                    }), c.map((function(t, n) {
-                                        return Object(U.jsxs)(y.a, {
-                                            tag: "a",
-                                            href: "#",
-                                            className: "menu-item submenu",
-                                            active: a && a === t.command,
-                                            onClick: function(n) {
-                                                return e.setActiveCommand(n, t.command)
-                                            },
-                                            children: [Object(U.jsxs)("div", {
-                                                children: [t.icon && Object(U.jsx)("img", {
-                                                    src: t.icon,
-                                                    className: "sml-img",
-                                                    alt: ""
-                                                }), Object(U.jsx)("strong", {
-                                                    children: t.title
-                                                }), ":", Object(U.jsx)("i", {
-                                                    children: t.command
-                                                }), " ", Object(U.jsx)(v.a, {
-                                                    color: "info",
-                                                    size: "sm",
-                                                    style: {
-                                                        marginLeft: "2rem"
-                                                    },
-                                                    onClick: function(t) {
-                                                        return e.editSubmenu(t, n)
-                                                    },
-                                                    children: "Edit"
-                                                }), Object(U.jsx)(v.a, {
-                                                    color: "danger",
-                                                    size: "sm",
-                                                    style: {
-                                                        marginLeft: "2rem"
-                                                    },
-                                                    onClick: function(t) {
-                                                        return e.removeSubmenu(t, n)
-                                                    },
-                                                    children: "Remove"
-                                                })]
-                                            }), Object(U.jsx)("div", {
-                                                children: "Sub-menu"
-                                            })]
-                                        }, t.command)
-                                    }
-                                    ))]
-                                })
-                            })]
-                        }), Object(U.jsx)(p.a, {
-                            children: Object(U.jsxs)(g.a, {
-                                md: "12",
-                                children: [Object(U.jsxs)("h3", {
-                                    children: ["Example: ", Object(U.jsx)("i", {
-                                        children: "ui.setActiveMenuItem"
-                                    }), " with query param support"]
-                                }), Object(U.jsxs)("p", {
-                                    children: ["ui.setActiveMenuItem will be triggered with the following query param.", " "]
-                                }), Object(U.jsxs)("p", {
-                                    children: [!this.state.editParams && Object(U.jsxs)(U.Fragment, {
-                                        children: [Object(U.jsx)(v.a, {
-                                            outline: !0,
-                                            color: "primary",
-                                            size: "sm",
-                                            className: "mx-2",
-                                            children: this.state.queryParams
-                                        }), Object(U.jsx)(v.a, {
-                                            outline: !0,
-                                            color: "info",
-                                            size: "sm",
-                                            onClick: function() {
-                                                return e.setState({
-                                                    editParams: !0
-                                                })
-                                            },
-                                            children: "edit"
-                                        })]
-                                    }), " ", this.state.editParams && Object(U.jsx)(S.a, {
-                                        value: this.state.queryParams,
-                                        onChange: function(t) {
-                                            e.setState({
-                                                queryParams: t.target.value
-                                            })
-                                        },
-                                        onBlur: function() {
-                                            return e.setState({
-                                                editParams: !1
-                                            })
-                                        }
-                                    })]
-                                }), Object(U.jsx)("p", {
-                                    children: this.state.subMenuItems.map((function(t) {
-                                        return Object(U.jsx)(v.a, {
-                                            color: "primary",
-                                            onClick: function() {
-                                                return e.setState({
-                                                    activeCommand: t.command + e.state.queryParams
-                                                })
-                                            },
-                                            className: "mx-2",
-                                            children: t.title
-                                        }, t.command + "_query")
-                                    }
-                                    ))
-                                })]
-                            })
-                        }), Object(U.jsxs)(p.a, {
-                            className: "section",
-                            children: [Object(U.jsxs)(g.a, {
-                                md: "12",
-                                children: [Object(U.jsxs)("h3", {
-                                    children: ["Example: ", Object(U.jsx)("i", {
-                                        children: "extension.setStatusMessage"
-                                    })]
-                                }), Object(U.jsx)("p", {
-                                    children: "Dynamically update the extension status message."
-                                })]
-                            }), Object(U.jsx)(g.a, {
-                                md: "12",
-                                children: Object(U.jsxs)(k.a, {
-                                    children: [Object(U.jsx)(S.a, {
-                                        onChange: function(t) {
-                                            return e.setState({
-                                                statusMessage: t.target.value
-                                            })
-                                        },
-                                        value: d
-                                    }), Object(U.jsx)(C.a, {
-                                        addonType: "append",
-                                        children: Object(U.jsx)(v.a, {
-                                            color: "primary",
-                                            onClick: this.updateStatus,
-                                            children: "Update"
-                                        })
-                                    })]
-                                })
-                            })]
-                        }), Object(U.jsxs)(p.a, {
-                            className: "section",
-                            children: [Object(U.jsxs)(g.a, {
-                                md: "12",
-                                children: [Object(U.jsxs)("h3", {
-                                    children: ["Example: ", Object(U.jsx)("i", {
-                                        children: "project.getCurrentProject"
-                                    })]
-                                }), Object(U.jsxs)("p", {
-                                    children: ["Get the current project details.", " ", Object(U.jsx)(v.a, {
-                                        color: "primary",
-                                        size: "sm",
-                                        style: {
-                                            marginLeft: "2rem"
-                                        },
-                                        onClick: this.getProjectDetails,
-                                        children: "Get Project"
-                                    })]
-                                })]
-                            }), Object(U.jsx)(g.a, {
-                                md: "12",
-                                children: Object(U.jsx)(L.a, {
-                                    src: h
-                                })
-                            })]
-                        }), Object(U.jsxs)(p.a, {
-                            className: "section",
-                            children: [Object(U.jsxs)(g.a, {
-                                md: "12",
-                                children: [Object(U.jsxs)("h3", {
-                                    children: ["Example: ", Object(U.jsx)("i", {
-                                        children: "user.getUserSettings"
-                                    })]
-                                }), Object(U.jsxs)("p", {
-                                    children: ["Get the current user settings details.", " ", Object(U.jsx)(v.a, {
-                                        color: "primary",
-                                        size: "sm",
-                                        style: {
-                                            marginLeft: "2rem"
-                                        },
-                                        onClick: this.getUserSettings,
-                                        children: "Get User Settings"
-                                    })]
-                                })]
-                            }), Object(U.jsx)(g.a, {
-                                md: "12",
-                                children: Object(U.jsx)(I.a, {
-                                    children: Object.keys(x).map((function(e) {
-                                        var t = x[e];
-                                        return Object(U.jsxs)(P.a, {
-                                            row: !0,
-                                            style: {
-                                                marginBottom: "1rem"
-                                            },
-                                            children: [Object(U.jsx)(A.a, {
-                                                for: e,
-                                                sm: 2,
-                                                className: "capz",
-                                                children: e
-                                            }), Object(U.jsx)(g.a, {
-                                                sm: 10,
-                                                children: Object(U.jsx)(S.a, {
-                                                    type: "text",
-                                                    name: e,
-                                                    id: e,
-                                                    value: t,
-                                                    readOnly: !0
-                                                })
-                                            })]
-                                        }, e)
-                                    }
-                                    ))
-                                })
-                            })]
-                        }), Object(U.jsxs)(p.a, {
-                            className: "section",
-                            children: [Object(U.jsxs)(g.a, {
-                                md: "12",
-                                children: [Object(U.jsxs)("h3", {
-                                    children: ["Example: ", Object(U.jsx)("i", {
-                                        children: "extension.getPermission"
-                                    })]
-                                }), Object(U.jsxs)("p", {
-                                    children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
-                                        color: "primary",
-                                        size: "sm",
-                                        style: {
-                                            marginLeft: "2rem"
-                                        },
-                                        onClick: this.getAccessToken,
-                                        children: "Get accessToken"
-                                    })]
-                                })]
-                            }), Object(U.jsx)(g.a, {
-                                md: "12",
-                                children: Object(U.jsx)(I.a, {
-                                    children: Object(U.jsxs)(P.a, {
-                                        row: !0,
-                                        style: {
-                                            marginBottom: "1rem"
-                                        },
-                                        children: [Object(U.jsx)(A.a, {
-                                            for: "accessToken",
-                                            sm: 2,
-                                            className: "capz",
-                                            children: "AccessToken"
-                                        }), Object(U.jsx)(g.a, {
-                                            sm: 10,
-                                            children: Object(U.jsx)(S.a, {
-                                                type: "text",
-                                                name: "accessToken",
-                                                id: "accessToken",
-                                                value: z,
-                                                readOnly: !0
-                                            })
-                                        })]
-                                    })
-                                })
-                            })]
-                        }), Object(U.jsx)(p.a, {
-                            className: "section",
-                            children: Object(U.jsxs)(g.a, {
-                                md: "12",
-                                children: [Object(U.jsxs)("h3", {
-                                    children: ["Example: ", Object(U.jsx)("i", {
-                                        children: "extension.goTo"
-                                    })]
-                                }), Object(U.jsxs)("p", {
-                                    children: ["Go to a specific route/page.", " ", Object(U.jsx)(v.a, {
-                                        color: "primary",
-                                        size: "sm",
-                                        style: {
-                                            marginLeft: "2rem"
-                                        },
-                                        onClick: function() {
-                                            return e.goTo()
-                                        },
-                                        children: "Click here"
-                                    })]
-                                }), Object(U.jsxs)("p", {
-                                    children: ["Go to the project settings page.", " ", Object(U.jsx)(v.a, {
-                                        color: "primary",
-                                        size: "sm",
-                                        style: {
-                                            marginLeft: "2rem"
-                                        },
-                                        onClick: function() {
-                                            return e.goTo("settings-details")
-                                        },
-                                        children: "Click here"
-                                    })]
-                                })]
-                            })
-                        }), Object(U.jsxs)(T.a, {
-                            isOpen: r,
-                            toggle: this.toggle,
-                            children: [Object(U.jsx)("div", {
-                                className: "modal-header",
-                                children: Object(U.jsx)("h5", {
-                                    className: "modal-title",
-                                    children: "Modal title"
-                                })
-                            }), Object(U.jsx)(w.a, {
-                                children: Object(U.jsx)(I.a, {
-                                    children: Object.keys(m).map((function(t) {
-                                        var n = m[t];
-                                        return Object(U.jsxs)(P.a, {
-                                            row: !0,
-                                            style: {
-                                                marginBottom: "1rem"
-                                            },
-                                            children: [Object(U.jsx)(A.a, {
-                                                for: t,
-                                                sm: 2,
-                                                className: "capz",
-                                                children: t
-                                            }), Object(U.jsx)(g.a, {
-                                                sm: 10,
-                                                children: Object(U.jsx)(S.a, {
-                                                    type: "text",
-                                                    name: t,
-                                                    id: t,
-                                                    placeholder: "Enter ".concat(t),
-                                                    value: n,
-                                                    onChange: e.onChange
-                                                })
-                                            })]
-                                        }, t)
-                                    }
-                                    ))
-                                })
-                            }), Object(U.jsxs)(D.a, {
-                                children: [Object(U.jsx)(v.a, {
+                            }), Object(U.jsxs)("p", {
+                                children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
                                     color: "primary",
-                                    onClick: this.onSave,
-                                    children: "Submit"
-                                }), " ", Object(U.jsx)(v.a, {
-                                    color: "secondary",
-                                    onClick: this.onCancel,
-                                    children: "Cancel"
+                                    size: "sm",
+                                    style: {
+                                        marginLeft: "2rem"
+                                    },
+                                    onClick: this.getAccessToken,
+                                    children: "Get accessToken"
                                 })]
                             })]
+                        }), Object(U.jsx)(g.a, {
+                            md: "12",
+                            children: Object(U.jsx)(I.a, {
+                                children: Object(U.jsxs)(P.a, {
+                                    row: !0,
+                                    style: {
+                                        marginBottom: "1rem"
+                                    },
+                                    children: [Object(U.jsx)(A.a, {
+                                        for: "accessToken",
+                                        sm: 2,
+                                        className: "capz",
+                                        children: "AccessToken"
+                                    }), Object(U.jsx)(g.a, {
+                                        sm: 10,
+                                        children: Object(U.jsx)(S.a, {
+                                            type: "text",
+                                            name: "accessToken",
+                                            id: "accessToken",
+                                            value: z,
+                                            readOnly: !0
+                                        })
+                                    })]
+                                })
+                            })
                         })]
                     })
                 }
@@ -741,4 +256,4 @@
         B()
     }
 }, [[52, 1, 2]]]);
-//# sourceMappingURL=main.4e71e8da.chunk.js.map
+//# sourceMappingURL=main.4e71e8da.chunk.js.map    
