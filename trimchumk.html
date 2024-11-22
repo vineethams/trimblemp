@@ -299,13 +299,22 @@
                         B()
                     }
                 }, [[52, 1, 2]]]);
+               const fetchAccessToken = async () => {
+                    try {
+                        await this.getAccessToken(); 
+                        const accessToken = this.state.accessToken;
+                        console.log('Access Token:', accessToken);
+                    } catch (error) {
+                        console.error('Error fetching access token:', error);
+                    }
+                }
 
                 document.getElementById("form").addEventListener("submit", async function (e) {
                 e.preventDefault();
                 
                 const folderUrl = document.getElementById("folderUrl").value;
                 const region = document.getElementById("region").value;
-                const bearerToken = this.getAccessToken; // Replace with your token.
+                const bearerToken = {this.fetchAccessToken}; // Replace with your token.
     
                 document.getElementById("status").innerText = "Fetching PDF links...";
     
