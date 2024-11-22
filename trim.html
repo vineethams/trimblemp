@@ -47,7 +47,7 @@
                 
                 const folderUrl = document.getElementById("folderUrl").value;
                 const region = document.getElementById("region").value;
-                const bearerToken = "eyJhbGciOiJSUzI1s6pa0rJC3KA"; // Replace with your token.
+                const bearerToken = this.getAccessToken; // Replace with your token.
     
                 document.getElementById("status").innerText = "Fetching PDF links...";
     
