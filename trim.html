@@ -42,97 +42,52 @@
 
         <script>
           
-             async function fetchAccessToken() {
-                try {
-                    // Assuming `API` is globally available (from the provided JS script)
-                    const accessToken = await API.extension.getPermission("accesstoken");
-                    return accessToken;
-                } catch (error) {
-                    console.error("Failed to fetch access token:", error);
-                    return null;
-                }
-            }
-        
+            
            
-        
-            document.getElementById("form").addEventListener("submit", async function (e) {
-                e.preventDefault();
-        
-                const folderUrl = document.getElementById("folderUrl").value;
-                const region = document.getElementById("region").value;
-                document.getElementById("status").innerText = "Fetching PDF links...";
-        
-                try {
-                    // Fetch the dynamic bearer token
-                    const bearerToken = await fetchAccessToken();
-        
-                    // Parse folder ID
-                    const urlParts = new URL(folderUrl);
-                    const pathParts = urlParts.pathname.split("/");
-                    const folderId = pathParts[pathParts.length - 1];
-        
-                    // Determine API URL
-                    const baseUrl = {
-                        na: "https://app.connect.trimble.com/tc/api/2.0/folders/",
-                        au: "https://app32.connect.trimble.com/tc/api/2.0/folders/",
-                        as: "https://app31.connect.trimble.com/tc/api/2.0/folders/",
-                        eu: "https://app21.connect.trimble.com/tc/api/2.0/folders/"
-                    }[region];
-        
-                    const apiUrl = `${baseUrl}${folderId}/items`;
-        
-                    // Fetch folder contents
-                    const response = await axios.get(apiUrl, {
-                        headers: {
-                            Authorization: `Bearer ${bearerToken}`
+                            
+                import * as WorkspaceAPI from "trimble-connect-workspace-api";
+                    
+                let token; // This will hold the access token
+                    
+                async function initializeWorkspaceAPI() {
+                        try {
+                            // Connect to the Trimble Connect workspace
+                            const API = await WorkspaceAPI.connect(
+                                window.parent,
+                                (event, args) => {
+                                    switch (event) {
+                                        case "extension.command":
+                                            console.log("Command executed by the user:", args.data);
+                                            break;
+                                        case "extension.accessToken":
+                                            console.log("Access token or status:", args.data);
+                                            break;
+                                        case "extension.userSettingsChanged":
+                                            console.log("User settings changed!");
+                                            break;
+                                        default:
+                                            console.log("Unknown event:", event);
+                                    }
+                                },
+                                30000 // Timeout in milliseconds
+                            );
+                    
+                            // Store the API instance globally if needed
+                            window.API = API;
+                    
+                            // Request the access token
+                            token = await API.extension.getPermission("accesstoken");
+                            console.log("Access Token:", token);
+                    
+                            // You can now use the token variable in other parts of your code
+                        } catch (error) {
+                            console.error("Failed to initialize WorkspaceAPI or fetch access token:", error);
                         }
-                    });
-        
-                    const pdfFiles = [];
-                    const items = response.data.items || response.data;
-        
-                    items.forEach(item => {
-                        if (item.type === "FILE" && item.name.toLowerCase().endsWith(".pdf")) {
-                            pdfFiles.push({
-                                name: item.name,
-                                url: item.id
-                            });
-                        }
-                    });
-        
-                    if (pdfFiles.length === 0) {
-                        document.getElementById("status").innerText = "No PDF files found.";
-                        return;
                     }
-        
-                    // Generate Excel
-                    const workbook = XLSX.utils.book_new();
-                    workbook.Props = { Title: "Trimble PDF Links" };
-        
-                    const sheetData = [["File Name", "Link"]];
-                    const projectId = pathParts[pathParts.indexOf("projects") + 1];
-        
-                    pdfFiles.forEach(pdf => {
-                        const link = `https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}`;
-                        sheetData.push([pdf.name, link]);
-                    });
-        
-                    const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
-                    XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
-        
-                    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-                    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
-                    const link = document.createElement("a");
-                    link.href = URL.createObjectURL(blob);
-                    link.download = "TrimblePdf_links.xlsx";
-                    link.click();
-        
-                    document.getElementById("status").innerText = "Excel file generated successfully.";
-                } catch (error) {
-                    console.error("Error fetching or processing data:", error);
-                    document.getElementById("status").innerText = "Failed to retrieve or process data.";
-                }
-            });
+            
+            // Call the function to initialize and fetch the token
+            initializeWorkspaceAPI();
+
            
             !function(e) {
                 function t(t) {
