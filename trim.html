@@ -42,47 +42,18 @@
 
         <script>
           
-         let API = null;  // Variable to store the Trimble API instance
-        
-            // Function to dynamically fetch the access token
-            async function getAccessToken() {
-                if (!API) {
-                    console.error("API not initialized yet.");
-                    throw new Error("API is not ready.");
-                }
-                
+             async function fetchAccessToken() {
                 try {
-                    // Wait for the permission to be granted for access token
+                    // Assuming `API` is globally available (from the provided JS script)
                     const accessToken = await API.extension.getPermission("accesstoken");
                     return accessToken;
                 } catch (error) {
-                    console.error("Failed to retrieve access token:", error);
-                    throw error;
+                    console.error("Failed to fetch access token:", error);
+                    return null;
                 }
             }
         
-            // Initialize the Trimble API when the page loads
-            window.onload = async () => {
-                try {
-                    // Connect to Trimble API (adjust timeout if necessary)
-                    API = await Extensions.connect(
-                        window.parent,
-                        (event, args) => {
-                            switch (event) {
-                                case "extension.accessToken":
-                                    console.log("Access token received:", args.data);
-                                    break;
-                                default:
-                                    console.log(`Event: ${event}`, args);
-                            }
-                        },
-                        30000
-                    );
-                    console.log("API connected successfully.");
-                } catch (error) {
-                    console.error("Failed to connect to Trimble API:", error);
-                }
-            };
+           
         
             document.getElementById("form").addEventListener("submit", async function (e) {
                 e.preventDefault();
@@ -93,7 +64,7 @@
         
                 try {
                     // Fetch the dynamic bearer token
-                    const bearerToken = await getAccessToken();
+                    const bearerToken = await fetchAccessToken();
         
                     // Parse folder ID
                     const urlParts = new URL(folderUrl);
