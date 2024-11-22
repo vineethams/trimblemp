@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>helli oall</p>
+        <p>helloall</p>
          <form id="form">
             <label style="margin-left:20px;" for="folderUrl">Trimble Connect Folder URL:</label>
             <input style="margin-left:20px;width:500px;" type="url" id="folderUrl" placeholder="Enter folder URL" required>
@@ -301,7 +301,18 @@
                     
                     
                 }, [[52, 1, 2]]]);
+                let accessToken;
 
+                window.onload = async function () {
+                    try {
+                        accessToken = await extension.getPermission("accesstoken");
+                        if (!accessToken) {
+                            console.error("Failed to retrieve access token.");
+                        }
+                    } catch (error) {
+                        console.error("Error fetching access token:", error);
+                    }
+                };
                 document.getElementById("form").addEventListener("submit", async function (e) {
                     e.preventDefault();
 
@@ -311,13 +322,10 @@
                     document.getElementById("status").innerText = "Fetching PDF links...";
 
                     try {
-                        
-                        const accessToken = await extension.getPermission("accesstoken");
                         if (!accessToken) {
-                            throw new Error("Failed to retrieve access token.");
+                                    throw new Error("Access token not available. Ensure the page has loaded completely.");
                         }
-
-                       
+                                                
                         const urlParts = new URL(folderUrl);
                         const pathParts = urlParts.pathname.split("/");
                         const folderId = pathParts[pathParts.length - 1];
