@@ -311,18 +311,18 @@
                     document.getElementById("status").innerText = "Fetching PDF links...";
 
                     try {
-                        // Fetch AccessToken
+                        
                         const accessToken = await extension.getPermission("accesstoken");
                         if (!accessToken) {
                             throw new Error("Failed to retrieve access token.");
                         }
 
-                        // Parse folder ID
+                       
                         const urlParts = new URL(folderUrl);
                         const pathParts = urlParts.pathname.split("/");
                         const folderId = pathParts[pathParts.length - 1];
 
-                        // Determine API URL
+                       
                         const baseUrl = {
                             na: "https://app.connect.trimble.com/tc/api/2.0/folders/",
                             au: "https://app32.connect.trimble.com/tc/api/2.0/folders/",
@@ -332,7 +332,7 @@
 
                         const apiUrl = `${baseUrl}${folderId}/items`;
 
-                        // Fetch folder contents
+                        
                         const response = await axios.get(apiUrl, {
                             headers: {
                                 Authorization: `Bearer ${accessToken}`
