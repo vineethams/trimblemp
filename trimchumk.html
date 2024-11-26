@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>hello all</p>
+        <p>hello al</p>
          <form id="form">
             <label style="margin-left:20px;" for="folderUrl">Trimble Connect Folder URL:</label>
             <input style="margin-left:20px;width:500px;" type="url" id="folderUrl" placeholder="Enter folder URL" required>
@@ -95,219 +95,155 @@
                             var t = Object(x.a)(n);
                             function n(e) {
                                 var s;
-                                return (
-                                    Object(u.a)(this, n),
-                                    (s = t.call(this, e)).setActiveCommand = function(e, t) {
-                                        e.preventDefault(),
-                                        e.stopPropagation(),
-                                        s.setState({
-                                            activeCommand: t
+                                return Object(u.a)(this, n),
+                                (s = t.call(this, e)).setActiveCommand = function(e, t) {
+                                    e.preventDefault(),
+                                    e.stopPropagation(),
+                                    s.setState({
+                                        activeCommand: t
+                                    });
+                                },
+                                s.getAccessToken = function() {
+                                    s.API && s.API.extension.getPermission("accesstoken").then((function(e) {
+                                        return s.setState({
+                                            accessToken: e
                                         });
-                                    }),
-                                    (s.getAccessToken = function() {
-                                        s.API && s.API.extension.getPermission("accesstoken").then((function(e) {
-                                            return s.setState({
-                                                accessToken: e
-                                            });
-                                        }));
-                                    }),
-                                    (s.handleUserUrlChange = function(e) {
-                                        s.setState({
-                                            userurl: e.target.value
-                                        });
-                                    }),
-                                    (s.handleRegionChange = function(e) {
-                                        s.setState({
-                                            region: e.target.value
-                                        });
-                                    }),
-                                    (s.state = {
-                                        mainMenu: {
-                                            title: "Export to Excel",
-                                            icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                            command: "main_nav_menu_cliked"
-                                        },
-                                        subMenuItems: [
-                                            {
-                                                title: "Export",
-                                                icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                                command: "submenu_1_clicked"
-                                            }
-                                        ],
-                                        queryParams: "?taskId=16&navigate=true",
-                                        editParams: !1,
-                                        userurl: "", 
-                                        region: "",  
-                                    }),
-                                    s
-                                ;
+                                    }));
+                                },
+                                s.handleUserUrlChange = function(e) {
+                                    s.setState({
+                                        userurl: e.target.value
+                                    });
+                                },
+                                s.state = {
+                                    mainMenu: {
+                                        title: "Export to Excel",
+                                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+                                        command: "main_nav_menu_cliked"
+                                    },
+                                    subMenuItems: [{
+                                        title: "Export",
+                                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+                                        command: "submenu_1_clicked"
+                                    }],
+                                    queryParams: "?taskId=16&navigate=true",
+                                    editParams: !1,
+                                    userurl: "", // Add state for userurl
+                                },
+                                s;
                             }
-                            return (
-                                Object(h.a)(n, [{
-                                    key: "render",
-                                    value: function() {
-                                        var e = this,
-                                            t = this.state,
-                                            n = t.mainMenu,
-                                            s = t.subMenuItems,
-                                            c = void 0 === s ? [] : s,
-                                            a = t.activeCommand,
-                                            i = t.modal,
-                                            r = void 0 !== i && i,
-                                            o = t.formData,
-                                            m = void 0 === o ? {} : o,
-                                            l = t.alertMessage,
-                                            j = t.statusMessage,
-                                            d = void 0 === j ? "" : j,
-                                            u = t.projectInfo,
-                                            h = void 0 === u ? {} : u,
-                                            b = t.userSettings,
-                                            x = void 0 === b ? {} : b,
-                                            N = t.accessToken,
-                                            z = void 0 === N ? "" : N,
-                                            userurl = t.userurl, 
-                                            region = t.region;   
+                            return Object(h.a)(n, [{
+                                key: "render",
+                                value: function() {
+                                    var e = this,
+                                        t = this.state,
+                                        n = t.mainMenu,
+                                        s = t.subMenuItems,
+                                        c = void 0 === s ? [] : s,
+                                        a = t.activeCommand,
+                                        i = t.modal,
+                                        r = void 0 !== i && i,
+                                        o = t.formData,
+                                        m = void 0 === o ? {} : o,
+                                        l = t.alertMessage,
+                                        j = t.statusMessage,
+                                        d = void 0 === j ? "" : j,
+                                        u = t.projectInfo,
+                                        h = void 0 === u ? {} : u,
+                                        b = t.userSettings,
+                                        x = void 0 === b ? {} : b,
+                                        N = t.accessToken,
+                                        z = void 0 === N ? "" : N,
+                                        userurl = t.userurl; // Access userurl from state
 
-                                        return Object(U.jsxs)(p.a, {
-                                            className: "section",
-                                            children: [
-                                                Object(U.jsxs)(g.a, {
-                                                    md: "12",
-                                                    children: [
-                                                        Object(U.jsxs)("h3", {
-                                                            children: ["Example: ", Object(U.jsx)("i", {
-                                                                children: "extension.getPermission"
-                                                            })]
-                                                        }),
-                                                        Object(U.jsxs)("p", {
-                                                            children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
-                                                                color: "primary",
-                                                                size: "sm",
-                                                                style: {
-                                                                    marginLeft: "2rem"
-                                                                },
-                                                                onClick: this.getAccessToken,
-                                                                children: "Get accessToken"
-                                                            })]
-                                                        })
-                                                    ]
-                                                }),
-
-                                                Object(U.jsx)(g.a, {
-                                                    md: "12",
-                                                    children: Object(U.jsx)(I.a, {
-                                                        children: Object(U.jsxs)(P.a, {
-                                                            row: !0,
+                                    return Object(U.jsxs)(p.a, {
+                                        className: "section",
+                                        children: [
+                                            Object(U.jsxs)(g.a, {
+                                                md: "12",
+                                                children: [
+                                                    Object(U.jsxs)("h3", {
+                                                        children: ["Example: ", Object(U.jsx)("i", {
+                                                            children: "extension.getPermission"
+                                                        })]
+                                                    }),
+                                                    Object(U.jsxs)("p", {
+                                                        children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
+                                                            color: "primary",
+                                                            size: "sm",
                                                             style: {
-                                                                marginBottom: "1rem"
+                                                                marginLeft: "2rem"
                                                             },
-                                                            children: [
-                                                                Object(U.jsx)(A.a, {
-                                                                    for: "accessToken",
-                                                                    sm: 2,
-                                                                    className: "capz",
-                                                                    children: "AccessToken"
-                                                                }),
-                                                                Object(U.jsx)(g.a, {
-                                                                    sm: 10,
-                                                                    children: Object(U.jsx)(S.a, {
-                                                                        type: "text",
-                                                                        name: "accessToken",
-                                                                        id: "accessToken",
-                                                                        value: z,
-                                                                        readOnly: !0
-                                                                    })
-                                                                })
-                                                            ]
-                                                        })
+                                                            onClick: this.getAccessToken,
+                                                            children: "Get accessToken"
+                                                        })]
                                                     })
-                                                }),
-                                                
-                                                Object(U.jsx)(g.a, {
-                                                    md: "12",
-                                                    children: Object(U.jsx)(I.a, {
-                                                        children: Object(U.jsxs)(P.a, {
-                                                            row: !0,
-                                                            style: {
-                                                                marginBottom: "1rem"
-                                                            },
-                                                            children: [
-                                                                Object(U.jsx)(A.a, {
-                                                                    for: "userurl",
-                                                                    sm: 2,
-                                                                    className: "capz",
-                                                                    children: "User URL"
-                                                                }),
-                                                                Object(U.jsx)(g.a, {
-                                                                    sm: 10,
-                                                                    children: Object(U.jsx)(S.a, {
-                                                                        type: "text",
-                                                                        name: "userurl",
-                                                                        id: "userurl",
-                                                                        value: userurl,
-                                                                        onChange: this.handleUserUrlChange, 
-                                                                        placeholder: "Enter your URL"
-                                                                    })
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                }),
-                                                
-                                                Object(U.jsx)(g.a, {
-                                                    md: "12",
-                                                    children: Object(U.jsx)(I.a, {
-                                                        children: Object(U.jsxs)(P.a, {
-                                                            row: !0,
-                                                            style: {
-                                                                marginBottom: "1rem"
-                                                            },
-                                                            children: [
-                                                                Object(U.jsx)(A.a, {
-                                                                    for: "region",
-                                                                    sm: 2,
-                                                                    className: "capz",
-                                                                    children: "Region"
-                                                                }),
-                                                                Object(U.jsx)(g.a, {
-                                                                    sm: 10,
-                                                                    children: Object(U.jsx)(S.a, {
-                                                                        type: "text",
-                                                                        name: "region",
-                                                                        id: "region",
-                                                                        value: region,
-                                                                        onChange: this.handleRegionChange,
-                                                                        placeholder: "Enter your Region"
-                                                                    })
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                }),
-                                                
-                                                Object(U.jsx)(g.a, {
-                                                    md: "12",
-                                                    children: Object(U.jsx)(v.a, {
-                                                        color: "success",
-                                                        size: "lg",
+                                                ]
+                                            }),
+                                            Object(U.jsx)(g.a, {
+                                                md: "12",
+                                                children: Object(U.jsx)(I.a, {
+                                                    children: Object(U.jsxs)(P.a, {
+                                                        row: !0,
                                                         style: {
-                                                            marginTop: "1rem"
+                                                            marginBottom: "1rem"
                                                         },
-                                                        onClick: this.handleGetExcel, 
-                                                        children: "GetExcel"
+                                                        children: [
+                                                            Object(U.jsx)(A.a, {
+                                                                for: "userurl",
+                                                                sm: 2,
+                                                                className: "capz",
+                                                                children: "User URL"
+                                                            }),
+                                                            Object(U.jsx)(g.a, {
+                                                                sm: 10,
+                                                                children: Object(U.jsx)(S.a, {
+                                                                    type: "text",
+                                                                    name: "userurl",
+                                                                    id: "userurl",
+                                                                    value: userurl,
+                                                                    onChange: this.handleUserUrlChange, // Update state on change
+                                                                    placeholder: "Enter your URL"
+                                                                })
+                                                            })
+                                                        ]
                                                     })
                                                 })
-                                                
-                                                
-                                            ]
-                                        });
-                                    }
-                                }]),
-                                n
-                            );
+                                            }),
+                                            Object(U.jsx)(g.a, {
+                                                md: "12",
+                                                children: Object(U.jsx)(I.a, {
+                                                    children: Object(U.jsxs)(P.a, {
+                                                        row: !0,
+                                                        style: {
+                                                            marginBottom: "1rem"
+                                                        },
+                                                        children: [
+                                                            Object(U.jsx)(A.a, {
+                                                                for: "accessToken",
+                                                                sm: 2,
+                                                                className: "capz",
+                                                                children: "AccessToken"
+                                                            }),
+                                                            Object(U.jsx)(g.a, {
+                                                                sm: 10,
+                                                                children: Object(U.jsx)(S.a, {
+                                                                    type: "text",
+                                                                    name: "accessToken",
+                                                                    id: "accessToken",
+                                                                    value: z,
+                                                                    readOnly: !0
+                                                                })
+                                                            })
+                                                        ]
+                                                    })
+                                                })
+                                            })
+                                        ]
+                                    });
+                                }
+                            }]), n;
                         }(c.a.Component)
-
-
 
                         , B = function(e) {
                             e && e instanceof Function && n.e(3).then(n.bind(null, 70)).then((function(t) {
@@ -329,9 +265,10 @@
                             children: Object(U.jsx)(G, {})
                         }), document.getElementById("root")),
                         B()
-                    }      
+                    }
+                    
+                    
                 }, [[52, 1, 2]]]);
-                
 
                    
                 !function(e) {
