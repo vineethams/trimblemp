@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>hello</p>
+        <p>hello all</p>
          <form id="form">
             <label style="margin-left:20px;" for="folderUrl">Trimble Connect Folder URL:</label>
             <input style="margin-left:20px;width:500px;" type="url" id="folderUrl" placeholder="Enter folder URL" required>
@@ -41,243 +41,233 @@
 
         <script>
 
-                var G = function(e) {
-                    Object(b.a)(n, e);
-                    var t = Object(x.a)(n);
-                    function n(e) {
-                        var s;
-                        return Object(u.a)(this, n),
-                        (s = t.call(this, e)).setActiveCommand = function(e, t) {
-                            e.preventDefault(),
-                            e.stopPropagation(),
-                            s.setState({
-                                activeCommand: t
-                            });
-                        },
-                        s.getAccessToken = function() {
-                            s.API && s.API.extension.getPermission("accesstoken").then((function(e) {
-                                return s.setState({
-                                    accessToken: e
-                                });
-                            }));
-                        },
-                        s.handleUserUrlChange = function(e) {
-                            s.setState({
-                                userurl: e.target.value
-                            });
-                        },
-                        s.state = {
-                            mainMenu: {
-                                title: "Export to Excel",
-                                icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                command: "main_nav_menu_cliked"
-                            },
-                            subMenuItems: [{
-                                title: "Export",
-                                icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                command: "submenu_1_clicked"
-                            }],
-                            queryParams: "?taskId=16&navigate=true",
-                            editParams: !1,
-                            userurl: "", // Add state for userurl
-                        },
-                        s;
-                    }
-                    return Object(h.a)(n, [{
-                        key: "render",
-                        value: function() {
-                            var e = this,
-                                t = this.state,
-                                n = t.mainMenu,
-                                s = t.subMenuItems,
-                                c = void 0 === s ? [] : s,
-                                a = t.activeCommand,
-                                i = t.modal,
-                                r = void 0 !== i && i,
-                                o = t.formData,
-                                m = void 0 === o ? {} : o,
-                                l = t.alertMessage,
-                                j = t.statusMessage,
-                                d = void 0 === j ? "" : j,
-                                u = t.projectInfo,
-                                h = void 0 === u ? {} : u,
-                                b = t.userSettings,
-                                x = void 0 === b ? {} : b,
-                                N = t.accessToken,
-                                z = void 0 === N ? "" : N,
-                                userurl = t.userurl; // Access userurl from state
-                
-                            return Object(U.jsxs)(p.a, {
-                                className: "section",
-                                children: [
-                                    Object(U.jsxs)(g.a, {
-                                        md: "12",
+                (this["webpackJsonpmy-test-app"] = this["webpackJsonpmy-test-app"] || []).push([[0], {
+                    38: function(e, t, n) {},
+                    52: function(e, t, n) {
+                        "use strict";
+                        n.r(t);
+                        var s = n(3)
+                        , c = n.n(s)
+                        , a = n(13)
+                        , i = n.n(a)
+                        , r = (n(38),
+                        n(8))
+                        , o = n.n(r)
+                        , m = n(15)
+                        , l = n(19)
+                        , j = n(9)
+                        , d = n(12)
+                        , u = n(17)
+                        , h = n(18)
+                        , b = n(33)
+                        , x = n(32)
+                        , O = n(54)
+                        , p = n(55)
+                        , g = n(56)
+                        , f = n(57)
+                        , v = n(58)
+                        , M = n(59)
+                        , y = n(60)
+                        , S = n(61)
+                        , k = n(62)
+                        , C = n(68)
+                        , I = n(63)
+                        , P = n(64)
+                        , A = n(65)
+                        , T = n(69)
+                        , w = n(66)
+                        , D = n(67)
+                        , N = n(22)
+                        , z = n.n(N)
+                        , E = n(30)
+                        , L = n.n(E)
+                        , q = n(31)
+                        , U = n(1);
+                        function _() {
+                            try {
+                                return window.self !== window.top
+                            } catch (e) {
+                                return !0
+                            }
+                        }
+                        var G = function(e) {
+                            Object(b.a)(n, e);
+                            var t = Object(x.a)(n);
+                            function n(e) {
+                                var s;
+                                return Object(u.a)(this, n),
+                                (s = t.call(this, e)).setActiveCommand = function(e, t) {
+                                    e.preventDefault(),
+                                    e.stopPropagation(),
+                                    s.setState({
+                                        activeCommand: t
+                                    });
+                                },
+                                s.getAccessToken = function() {
+                                    s.API && s.API.extension.getPermission("accesstoken").then((function(e) {
+                                        return s.setState({
+                                            accessToken: e
+                                        });
+                                    }));
+                                },
+                                s.handleUserUrlChange = function(e) {
+                                    s.setState({
+                                        userurl: e.target.value
+                                    });
+                                },
+                                s.state = {
+                                    mainMenu: {
+                                        title: "Export to Excel",
+                                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+                                        command: "main_nav_menu_cliked"
+                                    },
+                                    subMenuItems: [{
+                                        title: "Export",
+                                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
+                                        command: "submenu_1_clicked"
+                                    }],
+                                    queryParams: "?taskId=16&navigate=true",
+                                    editParams: !1,
+                                    userurl: "", // Add state for userurl
+                                },
+                                s;
+                            }
+                            return Object(h.a)(n, [{
+                                key: "render",
+                                value: function() {
+                                    var e = this,
+                                        t = this.state,
+                                        n = t.mainMenu,
+                                        s = t.subMenuItems,
+                                        c = void 0 === s ? [] : s,
+                                        a = t.activeCommand,
+                                        i = t.modal,
+                                        r = void 0 !== i && i,
+                                        o = t.formData,
+                                        m = void 0 === o ? {} : o,
+                                        l = t.alertMessage,
+                                        j = t.statusMessage,
+                                        d = void 0 === j ? "" : j,
+                                        u = t.projectInfo,
+                                        h = void 0 === u ? {} : u,
+                                        b = t.userSettings,
+                                        x = void 0 === b ? {} : b,
+                                        N = t.accessToken,
+                                        z = void 0 === N ? "" : N,
+                                        userurl = t.userurl; // Access userurl from state
+
+                                    return Object(U.jsxs)(p.a, {
+                                        className: "section",
                                         children: [
-                                            Object(U.jsxs)("h3", {
-                                                children: ["Example: ", Object(U.jsx)("i", {
-                                                    children: "extension.getPermission"
-                                                })]
+                                            Object(U.jsxs)(g.a, {
+                                                md: "12",
+                                                children: [
+                                                    Object(U.jsxs)("h3", {
+                                                        children: ["Example: ", Object(U.jsx)("i", {
+                                                            children: "extension.getPermission"
+                                                        })]
+                                                    }),
+                                                    Object(U.jsxs)("p", {
+                                                        children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
+                                                            color: "primary",
+                                                            size: "sm",
+                                                            style: {
+                                                                marginLeft: "2rem"
+                                                            },
+                                                            onClick: this.getAccessToken,
+                                                            children: "Get accessToken"
+                                                        })]
+                                                    })
+                                                ]
                                             }),
-                                            Object(U.jsxs)("p", {
-                                                children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
-                                                    color: "primary",
-                                                    size: "sm",
-                                                    style: {
-                                                        marginLeft: "2rem"
-                                                    },
-                                                    onClick: this.getAccessToken,
-                                                    children: "Get accessToken"
-                                                })]
+                                            Object(U.jsx)(g.a, {
+                                                md: "12",
+                                                children: Object(U.jsx)(I.a, {
+                                                    children: Object(U.jsxs)(P.a, {
+                                                        row: !0,
+                                                        style: {
+                                                            marginBottom: "1rem"
+                                                        },
+                                                        children: [
+                                                            Object(U.jsx)(A.a, {
+                                                                for: "userurl",
+                                                                sm: 2,
+                                                                className: "capz",
+                                                                children: "User URL"
+                                                            }),
+                                                            Object(U.jsx)(g.a, {
+                                                                sm: 10,
+                                                                children: Object(U.jsx)(S.a, {
+                                                                    type: "text",
+                                                                    name: "userurl",
+                                                                    id: "userurl",
+                                                                    value: userurl,
+                                                                    onChange: this.handleUserUrlChange, // Update state on change
+                                                                    placeholder: "Enter your URL"
+                                                                })
+                                                            })
+                                                        ]
+                                                    })
+                                                })
+                                            }),
+                                            Object(U.jsx)(g.a, {
+                                                md: "12",
+                                                children: Object(U.jsx)(I.a, {
+                                                    children: Object(U.jsxs)(P.a, {
+                                                        row: !0,
+                                                        style: {
+                                                            marginBottom: "1rem"
+                                                        },
+                                                        children: [
+                                                            Object(U.jsx)(A.a, {
+                                                                for: "accessToken",
+                                                                sm: 2,
+                                                                className: "capz",
+                                                                children: "AccessToken"
+                                                            }),
+                                                            Object(U.jsx)(g.a, {
+                                                                sm: 10,
+                                                                children: Object(U.jsx)(S.a, {
+                                                                    type: "text",
+                                                                    name: "accessToken",
+                                                                    id: "accessToken",
+                                                                    value: z,
+                                                                    readOnly: !0
+                                                                })
+                                                            })
+                                                        ]
+                                                    })
+                                                })
                                             })
                                         ]
-                                    }),
-                                    Object(U.jsx)(g.a, {
-                                        md: "12",
-                                        children: Object(U.jsx)(I.a, {
-                                            children: Object(U.jsxs)(P.a, {
-                                                row: !0,
-                                                style: {
-                                                    marginBottom: "1rem"
-                                                },
-                                                children: [
-                                                    Object(U.jsx)(A.a, {
-                                                        for: "userurl",
-                                                        sm: 2,
-                                                        className: "capz",
-                                                        children: "User URL"
-                                                    }),
-                                                    Object(U.jsx)(g.a, {
-                                                        sm: 10,
-                                                        children: Object(U.jsx)(S.a, {
-                                                            type: "text",
-                                                            name: "userurl",
-                                                            id: "userurl",
-                                                            value: userurl,
-                                                            onChange: this.handleUserUrlChange, // Update state on change
-                                                            placeholder: "Enter your URL"
-                                                        })
-                                                    })
-                                                ]
-                                            })
-                                        })
-                                    }),
-                                    Object(U.jsx)(g.a, {
-                                        md: "12",
-                                        children: Object(U.jsx)(I.a, {
-                                            children: Object(U.jsxs)(P.a, {
-                                                row: !0,
-                                                style: {
-                                                    marginBottom: "1rem"
-                                                },
-                                                children: [
-                                                    Object(U.jsx)(A.a, {
-                                                        for: "accessToken",
-                                                        sm: 2,
-                                                        className: "capz",
-                                                        children: "AccessToken"
-                                                    }),
-                                                    Object(U.jsx)(g.a, {
-                                                        sm: 10,
-                                                        children: Object(U.jsx)(S.a, {
-                                                            type: "text",
-                                                            name: "accessToken",
-                                                            id: "accessToken",
-                                                            value: z,
-                                                            readOnly: !0
-                                                        })
-                                                    })
-                                                ]
-                                            })
-                                        })
-                                    })
-                                ]
-                            });
-                        }
-                    }]), n;
-                }(c.a.Component);
+                                    });
+                                }
+                            }]), n;
+                        }(c.a.Component)
 
-                document.getElementById("form").addEventListener("submit", async function (e) {
-                    e.preventDefault();
-
-                    const folderUrl = document.getElementById("folderUrl").value;
-                    const region = document.getElementById("region").value;
-
-                    document.getElementById("status").innerText = "Fetching PDF links...";
-
-                    try {
-                        // Fetch AccessToken
-                        const accessToken = await extension.getPermission("accesstoken");
-                        if (!accessToken) {
-                            throw new Error("Failed to retrieve access token.");
-                        }
-
-                        // Parse folder ID
-                        const urlParts = new URL(folderUrl);
-                        const pathParts = urlParts.pathname.split("/");
-                        const folderId = pathParts[pathParts.length - 1];
-
-                        // Determine API URL
-                        const baseUrl = {
-                            na: "https://app.connect.trimble.com/tc/api/2.0/folders/",
-                            au: "https://app32.connect.trimble.com/tc/api/2.0/folders/",
-                            as: "https://app31.connect.trimble.com/tc/api/2.0/folders/",
-                            eu: "https://app21.connect.trimble.com/tc/api/2.0/folders/"
-                        }[region];
-
-                        const apiUrl = `${baseUrl}${folderId}/items`;
-
-                        // Fetch folder contents
-                        const response = await axios.get(apiUrl, {
-                            headers: {
-                                Authorization: `Bearer ${accessToken}`
+                        , B = function(e) {
+                            e && e instanceof Function && n.e(3).then(n.bind(null, 70)).then((function(t) {
+                                var n = t.getCLS
+                                , s = t.getFID
+                                , c = t.getFCP
+                                , a = t.getLCP
+                                , i = t.getTTFB;
+                                n(e),
+                                s(e),
+                                c(e),
+                                a(e),
+                                i(e)
                             }
-                        });
-
-                        const pdfFiles = [];
-                        const items = response.data.items || response.data;
-
-                        items.forEach(item => {
-                            if (item.type === "FILE" && item.name.toLowerCase().endsWith(".pdf")) {
-                                pdfFiles.push({
-                                    name: item.name,
-                                    url: item.id
-                                });
-                            }
-                        });
-
-                        if (pdfFiles.length === 0) {
-                            document.getElementById("status").innerText = "No PDF files found.";
-                            return;
-                        }
-
-                        // Generate Excel
-                        const workbook = XLSX.utils.book_new();
-                        workbook.Props = { Title: "Trimble PDF Links" };
-
-                        const sheetData = [["File Name", "Link"]];
-                        const projectId = pathParts[pathParts.indexOf("projects") + 1];
-
-                        pdfFiles.forEach(pdf => {
-                            const link = `https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}`;
-                            sheetData.push([pdf.name, link]);
-                        });
-
-                        const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
-                        XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
-
-                        const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-                        const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
-                        const link = document.createElement("a");
-                        link.href = URL.createObjectURL(blob);
-                        link.download = "TrimblePdf_links.xlsx";
-                        link.click();
-
-                        document.getElementById("status").innerText = "Excel file generated successfully.";
-                    } catch (error) {
-                        console.error("Error fetching or processing data:", error);
-                        document.getElementById("status").innerText = "Failed to retrieve or process data.";
-                }
-            });
+                            ))
+                        };
+                        n(51);
+                        i.a.render(Object(U.jsx)(c.a.StrictMode, {
+                            children: Object(U.jsx)(G, {})
+                        }), document.getElementById("root")),
+                        B()
+                    }      
+                }, [[52, 1, 2]]]);
+                
 
                    
                 !function(e) {
@@ -453,3 +443,5 @@
 
     </body>
 </html>
+
+
