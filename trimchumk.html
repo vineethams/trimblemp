@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>hello</p>
+        <p>hello all </p>
          <form id="form">
             <label style="margin-left:20px;" for="folderUrl">Trimble Connect Folder URL:</label>
             <input style="margin-left:20px;width:500px;" type="url" id="folderUrl" placeholder="Enter folder URL" required>
@@ -122,8 +122,7 @@
                                         });
                                     }),
                                     s.handleGetExcel = async function () {
-                                        const { userurl, region } = s.state;
-                                        const bearerToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2lkLnRyaW1ibGUuY29tIiwiZXhwIjoxNzMyNTk2OTA0LCJuYmYiOjE3MzI1OTMzMDQsImlhdCI6MTczMjU5MzMwNCwianRpIjoiZWIwNWM4MGIzODJiNDA4ZDkyYmIxM2Y0M2EyNmQyMjYiLCJqd3RfdmVyIjoyLCJzdWIiOiJiOTAwZTQ1Ny1lOWFiLTQ4ZDEtYjAyZi1hYzEzNzFiOWMyYTQiLCJpZGVudGl0eV90eXBlIjoidXNlciIsImFtciI6WyJwYXNzd29yZCJdLCJhdXRoX3RpbWUiOjE3MzI1ODI2ODUsImF6cCI6ImU2NDI0ZWJmLTU1YTctNDBkNi04Mjg0LWExYzFkNWY0MmRlMCIsImF1ZCI6WyJlNjQyNGViZi01NWE3LTQwZDYtODI4NC1hMWMxZDVmNDJkZTAiXSwic2NvcGUiOiJUQ1dFQk5leHRnZW4iLCJkYXRhX3JlZ2lvbiI6InVzIn0.XqR0K8OcKBUgKOgmVq0hzuRvf_uMCFwbx4iYg6uswk2l88-T8227I1cdapifEs7n1zK2n5ath3jTFtHqraxEEpZkvvDuRoz0KkUqMIGu57_Xp3qrnLTLjJ8AdBMvHSbNPS9tmVbV_bEhnnbrbqago3RMYHftMsIeQAMi5f9YaHG-YXg0g5CEygliv5cMwnHciGKDS9pL5DWabBrlP50uByDr4oPMFFpxmHa9-fTOOejKSurW9qUdPNBs9V_jbGJi76jbczKNYce4HAOQRKNa7S6FZ48EOAOQfDzeBMzSii2YYE811OS0_Omty1TmwhJvsaOA49TCRLRNGLXpCmXMeQ"; 
+                                        const { userurl, region, accessToken } = s.state;
 
                                         if (!userurl || !region) {
                                             alert("Please enter both User URL and Region.");
@@ -131,14 +130,19 @@
                                         }
 
                                         try {
+                                            
+                                            if (!accessToken) {
+                                                await s.getAccessToken(); 
+                                            }
+
                                             s.setState({ statusMessage: "Fetching PDF links..." });
 
-                                            // Parse folder ID from the URL
+                                            
                                             const urlParts = new URL(userurl);
                                             const pathParts = urlParts.pathname.split("/");
                                             const folderId = pathParts[pathParts.length - 1];
 
-                                            // Determine the base API URL based on the region
+                                            
                                             const baseUrl = {
                                                 na: "https://app.connect.trimble.com/tc/api/2.0/folders/",
                                                 au: "https://app32.connect.trimble.com/tc/api/2.0/folders/",
@@ -153,10 +157,10 @@
 
                                             const apiUrl = `${baseUrl}${folderId}/items`;
 
-                                            // Fetch folder contents
+                                            
                                             const response = await axios.get(apiUrl, {
                                                 headers: {
-                                                    Authorization: `Bearer ${bearerToken}`
+                                                    Authorization: `Bearer ${s.state.accessToken}`
                                                 }
                                             });
 
@@ -177,7 +181,7 @@
                                                 return;
                                             }
 
-                                            // Generate Excel
+                                            
                                             const workbook = XLSX.utils.book_new();
                                             workbook.Props = { Title: "Trimble PDF Links" };
 
