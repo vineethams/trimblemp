@@ -178,7 +178,7 @@
                                             const projectId = pathParts[pathParts.indexOf("projects") + 1];
 
                                             pdfFiles.forEach(pdf => {
-                                                const linkFormula = `=HYPERLINK("https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}", "${pdf.name}")`;
+                                                const linkFormula = `HYPERLINK("https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}", "${pdf.name}")`;
                                                 sheetData.push([pdf.name, linkFormula]);
                                             });
 
