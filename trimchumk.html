@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 1</p>
+        <p>Test 2</p>
 
     <p id="status"></p>
         
@@ -153,10 +153,6 @@
                                                 }
                                             });
                                             
-                                            if (response.status === 404) {
-                                                alert("Invalid region selected.");
-                                                return;
-                                            }
                                                 
 
 
@@ -212,6 +208,9 @@
 
                                             s.setState({ statusMessage: "Excel file generated successfully." });
                                         } catch (error) {
+                                            if (error.response && error.response.status === 404) {
+                                                 alert("Invalid region selected.");
+                                            }
                                             console.error("Error fetching or processing data:", error);
                                             s.setState({ statusMessage: "Failed to retrieve or process data." });
                                         }
