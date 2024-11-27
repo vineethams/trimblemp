@@ -1,8 +1,8 @@
 {
   "icon": "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-  "title": "React example",
+  "title": "Export Excel",
   "url": "https://vineethams.github.io/trimblemp/trimchumk.html",
-  "description": "Test react extension",
+  "description": "Export Pdfs to excel",
   "configCommand": "do_config",
   "enabled": true
 }
