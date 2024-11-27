@@ -15,23 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>hello</p>
-         <form id="form">
-            <label style="margin-left:20px;" for="folderUrl">Trimble Connect Folder URL:</label>
-            <input style="margin-left:20px;width:500px;" type="url" id="folderUrl" placeholder="Enter folder URL" required>
-            <br><br>
-    
-            <label style="margin-left:20px;" for="region">Region:</label>
-            <select style="margin-left:20px;" id="region" required>
-                <option value="na">North America</option>
-                <option value="au">Australia</option>
-                <option value="as">Asia</option>
-                <option value="eu">Europe</option>
-            </select>
-            <br><br>
-    
-            <button style="margin-left:20px;" type="submit">Generate Excel</button>
-    </form>
+        
 
     <p id="status"></p>
         
@@ -423,7 +407,28 @@
                                                             id: "region",
                                                             value: region,
                                                             onChange: this.handleRegionChange,
-                                                            placeholder: "Enter your Region"
+                                                            children: [
+                                                                Object(U.jsx)("option", {
+                                                                    value: "",
+                                                                    children: "Select your Region"
+                                                                }),
+                                                                Object(U.jsx)("option", {
+                                                                    value: "eu",
+                                                                    children: "Europe"
+                                                                }),
+                                                                Object(U.jsx)("option", {
+                                                                    value: "au",
+                                                                    children: "Australia"
+                                                                }),
+                                                                Object(U.jsx)("option", {
+                                                                    value: "as",
+                                                                    children: "Asia"
+                                                                }),
+                                                                Object(U.jsx)("option", {
+                                                                    value: "na",
+                                                                    children: "North America"
+                                                                })
+                                                            ]
                                                         })
                                                     })]
                                                 })
