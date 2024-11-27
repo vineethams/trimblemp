@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>hello </p>
+        <p>hello all</p>
          <form id="form">
             <label style="margin-left:20px;" for="folderUrl">Trimble Connect Folder URL:</label>
             <input style="margin-left:20px;width:500px;" type="url" id="folderUrl" placeholder="Enter folder URL" required>
@@ -132,7 +132,8 @@
                                     }],
                                     queryParams: "?taskId=16&navigate=true",
                                     editParams: !1,
-                                    userurl: ""
+                                    userurl: "",
+                                    region: ""
                                 },
                                 s
                             }
@@ -270,7 +271,7 @@
                                                     }), Object(U.jsx)(g.a, {
                                                         sm: 10,
                                                         children: Object(U.jsx)(S.a, {
-                                                            type: "hidden",
+                                                            type: "text",
                                                             name: "accessToken",
                                                             id: "accessToken",
                                                             value: z,
@@ -298,12 +299,38 @@
                                                             type: "text",
                                                             name: "userurl",
                                                             id: "userurl",
-                                                            value: z,
+                                                            value: userurl,
                                                             readOnly: !0
                                                         })
                                                     })]
                                                 })
                                             })                    
+                                        }), Object(U.jsx)(g.a, {
+                                            md: "12",
+                                            children: Object(U.jsx)(I.a, {
+                                                children: Object(U.jsxs)(P.a, {
+                                                    row: !0,
+                                                    style: {
+                                                        marginBottom: "1rem"
+                                                    },
+                                                    children: [Object(U.jsx)(A.a, {
+                                                        for: "region",
+                                                        sm: 2,
+                                                        className: "capz",
+                                                        children: "Region"
+                                                    }), Object(U.jsx)(g.a, {
+                                                        sm: 10,
+                                                        children: Object(U.jsx)(S.a, {
+                                                            type: "text",
+                                                            name: "region",
+                                                            id: "region",
+                                                            value: region,
+                                                            readOnly: !0
+                                                        })
+                                                    })]
+                                                })
+                                            })                    
+
                                     })]
                                         
                                     })
