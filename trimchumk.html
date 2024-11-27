@@ -121,7 +121,7 @@
                                             
                                             if (!accessToken) {
                                                 await this.getAccessToken;
-                                                alert("Please Click on Authenticate."); 
+                                                alert("Please Click on Authorize button then Export."); 
                                             }
 
                                             s.setState({ statusMessage: "Fetching PDF links..." });
@@ -178,7 +178,7 @@
                                             const projectId = pathParts[pathParts.indexOf("projects") + 1];
 
                                             pdfFiles.forEach(pdf => {
-                                                const link = `https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}`;
+                                                const link = `=HYPERLINK("https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}", "${pdf.name}")`;
                                                 sheetData.push([pdf.name, link]);
                                             });
 
