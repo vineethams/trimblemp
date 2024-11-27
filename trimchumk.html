@@ -136,7 +136,8 @@
                                         try {
                                             
                                             if (!accessToken) {
-                                                await this.getAccessToken; 
+                                                await this.getAccessToken;
+                                                alert("Please Click on Authenticate."); 
                                             }
 
                                             s.setState({ statusMessage: "Fetching PDF links..." });
@@ -336,8 +337,8 @@
                                         children: [Object(U.jsxs)(g.a, {
                                             md: "12",
                                             children: [Object(U.jsxs)("h3", {
-                                                children: ["Example: ", Object(U.jsx)("i", {
-                                                    children: "extension.getPermission"
+                                                children: ["Export", Object(U.jsx)("i", {
+                                                    children: " to excel"
                                                 })]
                                             }), Object(U.jsxs)("p", {
                                                 children: ["Request the accessToken.", " ", Object(U.jsx)(v.a, {
@@ -366,7 +367,7 @@
                                                     }), Object(U.jsx)(g.a, {
                                                         sm: 10,
                                                         children: Object(U.jsx)(S.a, {
-                                                            type: "text",
+                                                            type: "hidden",
                                                             name: "accessToken",
                                                             id: "accessToken",
                                                             value: z,
