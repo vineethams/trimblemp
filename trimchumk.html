@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-      <p>Test</p>  
+        
 
     <p id="status"></p>
         
@@ -145,10 +145,7 @@
                                             }
 
                                             const apiUrl = `${baseUrl}${folderId}/items`;
-                                            if (!apiUrl) {
-                                                alert("Invalid region selected.");
-                                                return;
-                                            }    
+
                                             
                                             const response = await axios.get(apiUrl, {
                                                 headers: {
@@ -181,8 +178,8 @@
                                             const projectId = pathParts[pathParts.indexOf("projects") + 1];
 
                                             pdfFiles.forEach(pdf => {
-                                                const linkFormula = `HYPERLINK("https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}", "${pdf.name}")`;
-                                                sheetData.push([pdf.name, linkFormula]);
+                                                const formula = `HYPERLINK("https://web.connect.trimble.com/projects/${projectId}/viewer/2D?id=${pdf.url}", "${pdf.name}")`;
+                                                sheetData.push([pdf.name, { f: formula }]);
                                             });
 
                                             const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
