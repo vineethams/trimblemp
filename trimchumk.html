@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 3</p>
+        <p>Test 2</p>
 
     <p id="status"></p>
         
@@ -195,8 +195,8 @@
                                                 if (cell.startsWith('B') && worksheet[cell].f) { 
                                                     worksheet[cell].s = {
                                                         style: {
-                                                        color: { rgb: "0000FF" },
-                                                        underline: true,
+                                                        color: "primary",
+                                                        
                                                     },
                                                     };
                                                 }
@@ -222,11 +222,7 @@
                                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
                                         command: "main_nav_menu_cliked"
                                     },
-                                    subMenuItems: [{
-                                        title: "Export",
-                                        icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                        command: "submenu_1_clicked"
-                                    }],
+                                   
                                     queryParams: "?taskId=16&navigate=true",
                                     editParams: !1,
                                     userurl: "",
