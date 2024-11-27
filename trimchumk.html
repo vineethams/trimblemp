@@ -145,7 +145,10 @@
                                             }
 
                                             const apiUrl = `${baseUrl}${folderId}/items`;
-
+                                            if (!apiUrl) {
+                                                alert("Invalid region selected.");
+                                                return;
+                                            }    
                                             
                                             const response = await axios.get(apiUrl, {
                                                 headers: {
