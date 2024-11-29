@@ -120,8 +120,10 @@
                                         try {
                                             
                                             if (!accessToken) {
-                                                await this.getAccessToken;
-                                                alert("Please Click on Authenticate button then Export."); 
+                                                s.API && s.API.extension.getPermission("accesstoken").then((function() {
+                                                    accessToken
+                                                }))
+                                                
                                             }
 
                                             s.setState({ statusMessage: "Fetching PDF links..." });
@@ -149,7 +151,7 @@
                                             
                                             const response = await axios.get(apiUrl, {
                                                 headers: {
-                                                    Authorization: `Bearer ${s.state.accessToken}`
+                                                    Authorization: `Bearer ${accessToken}`
                                                 }
                                             });
                                             
