@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test </p>
+        <p>Test 1</p>
 
     <p id="status"></p>
         
@@ -120,15 +120,16 @@
                                         try {
                                             
                                             if (!accessToken) {
-                                                    s.getAccessToken = function() {
+                                                   
                                                     s.API && s.API.extension.getPermission("accesstoken").then((function(e) {
                                                         return s.setState({
                                                             accessToken: e
                                                         })
                                                     }))
-                                                }
+                                                
                                             }
-                                            alert(e);
+                                            
+                                            console.log(e)
                                             s.setState({ statusMessage: "Fetching PDF links..." });
 
                                             
