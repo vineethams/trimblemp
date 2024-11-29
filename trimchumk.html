@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 1</p>
+        <p>Test 2</p>
 
     <p id="status"></p>
         
@@ -173,7 +173,7 @@
                                                 return;
                                             }
 
-                                            const XLSX = require('xlsx-style');
+                                            
                                             const workbook = XLSX.utils.book_new();
                                             workbook.Props = { Title: "Trimble PDF Links" };
 
@@ -185,14 +185,9 @@
                                                 sheetData.push([pdf.name, { f: formula }]);
                                             });
 
-                                            for (let row = 2; row <= sheetData.length; row++) {
-                                                const cellAddress = `B${row}`;
-                                                if (worksheet[cellAddress]) {
-                                                    worksheet[cellAddress].s = {
-                                                        font: { color: { rgb: "0000FF" }, underline: true }
-                                                    };
-                                                }
-                                            }
+                                            const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
+
+                                            
                                             XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
 
                                             const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
