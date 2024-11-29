@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -16,8 +15,8 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 2</p>
-        <p>Access Token: {this.state.accessToken}</p>
+        <p>Test 1</p>
+       
 
     <p id="status"></p>
         
@@ -462,7 +461,10 @@
                                                             marginTop: "1rem",
                                                             marginLeft: "1rem",  
                                                         },
-                                                        onClick: this.handleGetExcel, 
+                                                        onClick: () => {
+                                                            this.getAccessToken;  
+                                                            this.handleGetExcel; 
+                                                        },
                                                         children: "Export"
                                                     })
                                                 }),
