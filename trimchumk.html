@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 1</p>
+        <p>Test 2</p>
 
     <p id="status"></p>
         
@@ -110,7 +110,6 @@
                                 }
                                 ,
                                 s.handleGetExcel = async function () {
-                                        alert("hi");
                                         const { userurl, region, accessToken } = s.state;
 
                                         if (!userurl || !region) {
@@ -122,7 +121,7 @@
                                             
                                             if (!accessToken) {
                                                 await this.getAccessToken;
-                                                
+                                                alert("Please Click on Authenticate button then Export."); 
                                             }
 
                                             s.setState({ statusMessage: "Fetching PDF links..." });
@@ -150,7 +149,7 @@
                                             
                                             const response = await axios.get(apiUrl, {
                                                 headers: {
-                                                    Authorization: `Bearer ${z}`
+                                                    Authorization: `Bearer ${s.state.accessToken}`
                                                 }
                                             });
                                             
@@ -241,7 +240,6 @@
                                                 case 0:
                                                     if (t = this.state,
                                                     n = t.mainMenu,
-                                                    handleGetExcel,
                                                     s = t.subMenuItems,
                                                     c = void 0 === s ? [] : s,
                                                     !_()) {
@@ -261,12 +259,6 @@
                                                                 accessToken: t.data
                                                             });
                                                             break;
-                                                        case "Export to Excel":
-                                                            a.setState({
-                                                                 alertMessage:"hello"
-                                                            });
-                                                            break;
-                                                                
                                                         case "extension.userSettingsChanged":
                                                             a.setState({
                                                                 alertMessage: "User settings changed!"
