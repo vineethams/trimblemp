@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 1</p>
+        <p>Test 2</p>
 
     <p id="status"></p>
         
@@ -173,7 +173,7 @@
                                                 return;
                                             }
 
-                                            
+                                            const XLSX = require('xlsx');
                                             const workbook = XLSX.utils.book_new();
                                             workbook.Props = { Title: "Trimble PDF Links" };
 
