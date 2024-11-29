@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -16,6 +17,7 @@
     </head>
     <body>
         <p>Test 2</p>
+        <p>Access Token: {this.state.accessToken}</p>
 
     <p id="status"></p>
         
@@ -123,8 +125,7 @@
                                                 await this.getAccessToken;
                                                 
                                             }
-                                            alert(this.state.accessToken);
-                                            console.log(z);
+                                            
                                             s.setState({ statusMessage: "Fetching PDF links..." });
 
                                             
@@ -235,6 +236,7 @@
                                 value: function() {
                                     var e = Object(m.a)(o.a.mark((function e() {
                                         var t, n, s, c, a = this;
+                                        this.getAccessToken;
                                         return o.a.wrap((function(e) {
                                             for (; ; )
                                                 switch (e.prev = e.next) {
