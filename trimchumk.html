@@ -186,17 +186,12 @@
                                             });
 
                                             const worksheet = XLSX.utils.aoa_to_sheet(sheetData);
-
-                                            Object.keys(worksheet).forEach(cell => {
-                                                if (cell.startsWith('B') && worksheet[cell].f) { 
-                                                    worksheet[cell].s = {
-                                                        style: {
-                                                        color: "primary",
-                                                        
-                                                    },
-                                                    };
+                                            const styles = {
+                                                B2: {
+                                                    font: { color: { rgb: "0000FF" }, underline: true }
                                                 }
-                                            });
+                                            };
+
                                             XLSX.utils.book_append_sheet(workbook, worksheet, "PDF Links");
 
                                             const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
