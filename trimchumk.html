@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 1 </p>
+        <p>Test2 </p>
 
     <p id="status"></p>
         
@@ -114,8 +114,9 @@
                                         if(!userurl) {
                                            chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function(tabs) {
                                              const userurl = tabs[0].url;
+                                             alert(userurl);  
                                            });
-                                           alert(userurl);
+                                           alert("hi");
                                         }
                                         try {
                                             
