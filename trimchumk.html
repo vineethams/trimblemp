@@ -111,13 +111,9 @@
                                 ,
                                 s.handleGetExcel = async function () {
                                         const { userurl, region, accessToken } = s.state;
-                                        if (!userurl) {
-                                            const context = await s.API.extension.getContext();
-                                            if (context && context.folder) {
-                                                userurl = context.folder.url; 
-                                            } else {
-                                                throw new Error("Unable to retrieve the current folder URL. Please enter it manually.");
-                                            }
+                                        if (!userurl || !region) {
+                                            alert("Please enter both User URL and Region.");
+                                            return;
                                         }
 
                                         try {
