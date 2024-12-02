@@ -4,5 +4,10 @@
   "url": "https://vineethams.github.io/trimblemp/trimchumk.html",
   "description": "Export Pdfs to excel",
   "configCommand": "do_config",
-  "enabled": true
+  "enabled": true,
+  "permissions": ["tabs"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+        "service_worker": "background.js"
+    }
 }
