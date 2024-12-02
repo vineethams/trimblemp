@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test</p>
+        <p>Test1</p>
 
     <p id="status"></p>
         
@@ -25,6 +25,9 @@
 
         <script>
            let parentUrl;
+           let urll;
+            urll = window.parent.location.href;
+            console.log("urll", urll);
             try {
                 parentUrl = document.location.ancestorOrigins[0];
                 console.log("Parent URL (Trimble Connect):", parentUrl);
