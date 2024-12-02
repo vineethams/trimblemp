@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test</p>
+        <p>Test  code</p>
 
     <p id="status"></p>
         
@@ -24,6 +24,14 @@
 
 
         <script>
+            currentURL = '';
+            chrome.tabs.query({ 'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT }, function(tabs) {
+    
+               currentURL = tabs[0].url;
+
+    
+               handleGetExcel(currentURL);
+            });
 
                 (this["webpackJsonpmy-test-app"] = this["webpackJsonpmy-test-app"] || []).push([[0], {
                     38: function(e, t, n) {},
@@ -116,9 +124,8 @@
                                 s.handleGetExcel = async function () {
                                         alert("export");
                                         const { userurl, region, accessToken } = s.state;
-                                        if (!userurl || !region) {
-                                            alert("Please enter both User URL and Region.");
-                                            return;
+                                        if (!userurl) {
+                                            userurl = currentURL;
                                         }
 
                                         try {
