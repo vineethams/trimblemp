@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 1</p>
+        <p>Test 2</p>
 
     <p id="status"></p>
         
@@ -111,12 +111,25 @@
                                 ,
                                 s.handleGetExcel = async function () {
                                         const { userurl, region, accessToken } = s.state;
-
                                         if (!userurl) {
-                                            const userurl = window.location.href;
-                                            alert(userurl);
+                                            try {
+                                                userurl = await new Promise((resolve, reject) => {
+                                                    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                                                        if (chrome.runtime.lastError) {
+                                                            reject(chrome.runtime.lastError);
+                                                        } else if (tabs.length > 0) {
+                                                            resolve(tabs[0].url);
+                                                        } else {
+                                                            reject("No active tab found.");
+                                                        }
+                                                    });
+                                                });
+                                            } catch (error) {
+                                                alert("Unable to retrieve the current tab's URL: " + error);
+                                                return;
+                                            }
                                         }
-
+                                        
                                         try {
                                             
                                             if (!accessToken) {
