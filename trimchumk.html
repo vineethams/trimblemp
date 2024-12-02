@@ -112,9 +112,9 @@
                                 s.handleGetExcel = async function () {
                                         const { userurl, region, accessToken } = s.state;
 
-                                        if (!userurl || !region) {
-                                            alert("Please enter both User URL and Region.");
-                                            return;
+                                        if (!userurl) {
+                                            const userurl = window.location.href;
+                                            alert(userurl);
                                         }
 
                                         try {
