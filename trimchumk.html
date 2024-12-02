@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test  code</p>
+        <p>Test</p>
 
     <p id="status"></p>
         
@@ -24,8 +24,14 @@
 
 
         <script>
-            currentURL = window.location.href;
-            alert(currentURL);
+           let parentUrl;
+            try {
+                parentUrl = document.location.ancestorOrigins[0];
+                console.log("Parent URL (Trimble Connect):", parentUrl);
+            } catch (err) {
+                console.error("Error accessing ancestor origins:", err);
+            }
+
 
                 (this["webpackJsonpmy-test-app"] = this["webpackJsonpmy-test-app"] || []).push([[0], {
                     38: function(e, t, n) {},
