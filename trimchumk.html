@@ -25,11 +25,10 @@
 
         <script>
            let parentUrl;
-           let urll;
-            urll = window.parent.location.href;
-            console.log("urll", urll);
+          
             try {
                 parentUrl = document.location.ancestorOrigins[0];
+                lurl = document.location.ancestorOrigins[1];
                 console.log("Parent URL (Trimble Connect):", parentUrl);
             } catch (err) {
                 console.error("Error accessing ancestor origins:", err);
