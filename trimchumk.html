@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test </p>
+        <p>Test 1</p>
 
     <p id="status"></p>
         
@@ -111,10 +111,15 @@
                                 ,
                                 s.handleGetExcel = async function () {
                                         const { userurl, region, accessToken } = s.state;
-                                        if(!userurl) {
-                                           const userurl = window.parent.location.href;
-                                           alert(userurl);
+                                        if (!userurl) {
+                                            const context = await s.API.extension.getContext();
+                                            if (context && context.folder) {
+                                                userurl = context.folder.url; 
+                                            } else {
+                                                throw new Error("Unable to retrieve the current folder URL. Please enter it manually.");
+                                            }
                                         }
+
                                         try {
                                             
                                             if (!accessToken) {
