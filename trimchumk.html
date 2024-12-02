@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 2</p>
+        <p>Test </p>
 
     <p id="status"></p>
         
@@ -111,25 +111,11 @@
                                 ,
                                 s.handleGetExcel = async function () {
                                         const { userurl, region, accessToken } = s.state;
-                                        if (!userurl) {
-                                            try {
-                                                userurl = await new Promise((resolve, reject) => {
-                                                    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                                                        if (chrome.runtime.lastError) {
-                                                            reject(chrome.runtime.lastError);
-                                                        } else if (tabs.length > 0) {
-                                                            resolve(tabs[0].url);
-                                                        } else {
-                                                            reject("No active tab found.");
-                                                        }
-                                                    });
-                                                });
-                                            } catch (error) {
-                                                alert("Unable to retrieve the current tab's URL: " + error);
-                                                return;
-                                            }
-                                        }
-                                        
+                                        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function(tabs) {
+                                            const userurl = tabs[0].url;
+                                        });
+
+                                    
                                         try {
                                             
                                             if (!accessToken) {
