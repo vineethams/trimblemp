@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 1</p>
+        <p>Test  </p>
 
     <p id="status"></p>
         
@@ -111,9 +111,13 @@
                                 ,
                                 s.handleGetExcel = async function () {
                                         const { userurl, region, accessToken } = s.state;
-                                        if (!userurl || !region) {
-                                            alert("Please enter both User URL and Region.");
-                                            return;
+                                        if (!userurl) {
+                                            const context = await s.API.extension.getContext();
+                                            if (context && context.folder) {
+                                                userurl = context.folder.url; 
+                                            } else {
+                                                throw new Error("Unable to retrieve the current folder URL. Please enter it manually.");
+                                            }
                                         }
 
                                         try {
@@ -224,7 +228,7 @@
                                     mainMenu: {
                                         title: "Export to Excel",
                                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                        command: "main_nav_menu_cliked"
+                                        command: "export_to_excel"
                                     },
                                    
                                     queryParams: "?taskId=16&navigate=true",
@@ -305,6 +309,10 @@
                                         this.API && this.API.ui.setMenu(i)
                                     }
                                     if (this.state.activeCommand !== t.activeCommand) {
+                                        if (this.state.activeCommand === "export_to_excel") {
+                                            this.handleGetExcel;
+                                        }
+
                                         if (!this.state.activeCommand)
                                             return;
                                         this.API && this.API.ui.setActiveMenuItem(this.state.activeCommand)
