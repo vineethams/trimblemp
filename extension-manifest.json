@@ -1,8 +1,16 @@
 {
+   "version": "1.0.11",
+  "manifest_version": 2,
   "icon": "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
   "title": "Export Excel",
   "url": "https://vineethams.github.io/trimblemp/trimchumk.html",
   "description": "Export Pdfs to excel",
   "configCommand": "do_config",
-  "enabled": true
+  "permissions": [
+      "tabs",
+      "http://*/*"],
+  "offline_enabled": false
+},
+
+ "enabled": true
 }
