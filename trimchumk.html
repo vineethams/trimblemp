@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test  </p>
+        <p>Test  code</p>
 
     <p id="status"></p>
         
@@ -110,6 +110,7 @@
                                 }
                                 ,
                                 s.handleGetExcel = async function () {
+                                        alert("export");
                                         const { userurl, region, accessToken } = s.state;
                                         if (!userurl) {
                                             const context = await s.API.extension.getContext();
