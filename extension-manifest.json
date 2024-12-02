@@ -9,8 +9,5 @@
   "permissions": [
       "tabs",
       "http://*/*"],
-  "offline_enabled": false
-},
-
  "enabled": true
 }
