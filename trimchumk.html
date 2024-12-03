@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test 11</p>
+        <p>Test </p>
 
     <p id="status"></p>
         
@@ -24,8 +24,9 @@
 
 
         <script>
-            var currentUrl = document.referrer;
-            console.log("current",currentUrl);
+              var url = (window.location != window.parent.location)
+            ? document.referrer
+            : document.location.href;
            
 
                 (this["webpackJsonpmy-test-app"] = this["webpackJsonpmy-test-app"] || []).push([[0], {
