@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test code</p>
+        <p>Test1</p>
 
     <p id="status"></p>
         
@@ -24,16 +24,29 @@
 
 
         <script>
-           let parentUrl;
-          
-            try {
-                parentUrl = document.location.ancestorOrigins[0];
-                lurl = document.location.ancestorOrigins[1];
-                console.log("Parent URL (Trimble Connect):", parentUrl);
-                console.log("other URL (Trimble Connect):", lurl);
-            } catch (err) {
-                console.error("Error accessing ancestor origins:", err);
-            }
+            var origins = location.ancestorOrigins;
+            if ( ! origins ) {
+              origins = { "length": 1 };
+              try {
+                if ( window.parent[0].top.document )
+                  // Chrome & Firefox (same domain)
+                  origins[0] = location.origin;
+            
+              } catch(err) {
+                // Firefox (different domains CORS policy)      
+                origins[0] = "*"; // force any domain
+              };
+            };
+            console.log( origins, location.origin )
+            if ( origins[ origins.length -1 ] == location.origin ) {
+              // same domain
+              alert("Hello word!");
+            
+            } else {
+              // different domains
+              var message = 'alert("Hello word!");';
+               window.parent.postMessage( message, origins[ origins.length -1 ] );
+            };
 
 
                 (this["webpackJsonpmy-test-app"] = this["webpackJsonpmy-test-app"] || []).push([[0], {
