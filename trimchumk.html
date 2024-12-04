@@ -15,7 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
     <body>
-        <p>Test</p>
+        
 
     <p id="status"></p>
         
@@ -24,7 +24,7 @@
 
 
         <script>
-                
+
                 (this["webpackJsonpmy-test-app"] = this["webpackJsonpmy-test-app"] || []).push([[0], {
                     38: function(e, t, n) {},
                     52: function(e, t, n) {
@@ -85,11 +85,7 @@
                                     e.stopPropagation(),
                                     s.setState({
                                         activeCommand: t
-                                    },() => {    
-                                         if (command === "export_to_excel") {
-                                             s.handleGetExcel;
-                                         }
-                                    });
+                                    })
                                 }
                                 ,
                                 s.getAccessToken = function() {
@@ -114,10 +110,10 @@
                                 }
                                 ,
                                 s.handleGetExcel = async function () {
-                                        
                                         const { userurl, region, accessToken } = s.state;
-                                        if (!userurl) {
-                                            alert("please enter url");
+                                        if (!userurl || !region) {
+                                            alert("Please enter both User URL and Region.");
+                                            return;
                                         }
 
                                         try {
@@ -228,7 +224,7 @@
                                     mainMenu: {
                                         title: "Export to Excel",
                                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                        command: "export_to_excel"
+                                        command: "main_nav_menu_cliked"
                                     },
                                    
                                     queryParams: "?taskId=16&navigate=true",
@@ -309,10 +305,6 @@
                                         this.API && this.API.ui.setMenu(i)
                                     }
                                     if (this.state.activeCommand !== t.activeCommand) {
-                                        if (this.state.activeCommand === "export_to_excel") {
-                                            this.handleGetExcel;
-                                        }
-
                                         if (!this.state.activeCommand)
                                             return;
                                         this.API && this.API.ui.setActiveMenuItem(this.state.activeCommand)
