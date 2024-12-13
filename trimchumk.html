@@ -16,7 +16,7 @@
     </head>
     <body>
         
-    <p>Test</p>
+    <p>Test 1</p>
     <p id="status"></p>
         
         <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -41,10 +41,10 @@
                     }
                 
                     const { type, data } = event.data;
-                
+                    console.log("Current Trimble Connect URL:", data.url);
                     if (type === "workspaceActiveUrl") {
                         console.log("Current Trimble Connect URL:", data.url);
-                        // Do something with the URL, e.g., display it or store it
+                        
                     }
                 });
                 
