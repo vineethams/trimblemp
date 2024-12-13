@@ -16,7 +16,7 @@
     </head>
     <body>
         
-    <p>Test 2</p>
+    <p>Test</p>
     <p id="status"></p>
         
         <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -24,9 +24,20 @@
         
 
         <script>
-                const currentUrl = window.location.href;
+                window.addEventListener("message", (event) => {
+                    // Ensure the message is from Trimble Connect
+                    if (event.origin !== "https://web.connect.trimble.com/") {
+                        console.warn("Message from untrusted origin:", event.origin);
+                        return;
+                    }
+                
+                    // Process the message
+                    const { type, data } = event.data;
+                    if (type === "workspaceActiveUrl") {
+                        console.log("Current Trimble Connect URL:", data.url);
+                    }
+                });
 
-                console.log(currentUrl); 
                 (this["webpackJsonpmy-test-app"] = this["webpackJsonpmy-test-app"] || []).push([[0], {
                     38: function(e, t, n) {},
                     52: function(e, t, n) {
