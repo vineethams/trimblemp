@@ -16,7 +16,7 @@
     </head>
     <body>
         
-    <p>Testht</p>
+    <p>Test</p>
     <p id="status"></p>
         
         <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -35,7 +35,7 @@
                 
                 window.addEventListener("message", (event) => {
                     
-                    if (event.origin !== "https://connect.trimble.com") {
+                    if (event.origin !== "https://web.connect.trimble.com") {
                         console.warn("Message from untrusted origin:", event.origin);
                         return;
                     }
