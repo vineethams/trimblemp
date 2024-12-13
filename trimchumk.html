@@ -26,10 +26,7 @@
         <script>
                 window.addEventListener("message", (event) => {
                     // Ensure the message is from Trimble Connect
-                    if (event.origin !== "https://web.connect.trimble.com/") {
-                        console.warn("Message from untrusted origin:", event.origin);
-                        return;
-                    }
+                    
                 
                     // Process the message
                     const { type, data } = event.data;
