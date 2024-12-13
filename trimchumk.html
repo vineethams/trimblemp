@@ -116,7 +116,7 @@
                                         activeCommand: t
                                     })
                                     if (t === "main_nav_menu_cliked" || t === "Export to Excel") {
-                                        alert("hello");
+                                        this.jumpo();
                                     }
                                 }
                                 ,
@@ -256,7 +256,8 @@
                                     mainMenu: {
                                         title: "Export to Excel",
                                         icon: "https://components.stage.connect.trimble.com/trimble-connect-project-workspace-api/logo192.png",
-                                        command: "main_nav_menu_cliked"
+                                        command: "main_nav_menu_cliked",
+                                        onClick: this.jumpo
                                     },
                                    
                                     queryParams: "?taskId=16&navigate=true",
@@ -266,6 +267,10 @@
                                 },
                                 s
                             }
+                            jumpo = function() {
+                                console.log("The 'jumpo' function has been triggered!");
+                                alert("set");
+                            };
                             return Object(h.a)(n, [{
                                 key: "componentDidMount",
                                 value: function() {
