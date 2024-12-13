@@ -25,10 +25,7 @@
 
         <script>
                 window.addEventListener("message", (event) => {
-                    // Ensure the message is from Trimble Connect
-                    
-                
-                    // Process the message
+                   
                     const { type, data } = event.data;
                     
                     console.log("Current Trimble Connect URL:", data.url);
