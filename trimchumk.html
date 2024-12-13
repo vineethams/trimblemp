@@ -16,7 +16,7 @@
     </head>
     <body>
         
-    <p>Test m</p>
+    <p>Test 2</p>
     <p id="status"></p>
         
         <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -106,10 +106,7 @@
                         var G = function(e) {
                             Object(b.a)(n, e);
                             var t = Object(x.a)(n);
-                            jumpo = function() {
-                                console.log("The 'jumpo' function has been triggered!");
-                                alert("set");
-                            };
+                            
                             function n(e) {
                                 var s;
                                 return Object(u.a)(this, n),
@@ -143,6 +140,10 @@
                                         s.setState({
                                             region: e.target.value
                                         });
+                                }
+                                jumpo = function() {
+                                    console.log("The 'jumpo' function has been triggered!");
+                                    alert("test");
                                 }
                                 ,
                                 s.handleGetExcel = async function () {
