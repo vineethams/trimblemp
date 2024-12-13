@@ -115,6 +115,9 @@
                                     s.setState({
                                         activeCommand: t
                                     })
+                                    if (t === "main_nav_menu_cliked" || t === "Export to Excel") {
+                                        alert("hello");
+                                    }
                                 }
                                 ,
                                 s.getAccessToken = function() {
