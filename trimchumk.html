@@ -16,7 +16,7 @@
     </head>
     <body>
         
-    <p>Test 1 </p>
+    <p>Test m</p>
     <p id="status"></p>
         
         <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -106,6 +106,10 @@
                         var G = function(e) {
                             Object(b.a)(n, e);
                             var t = Object(x.a)(n);
+                            jumpo = function() {
+                                console.log("The 'jumpo' function has been triggered!");
+                                alert("set");
+                            };
                             function n(e) {
                                 var s;
                                 return Object(u.a)(this, n),
@@ -116,7 +120,7 @@
                                         activeCommand: t
                                     })
                                     if (t === "main_nav_menu_cliked" || t === "Export to Excel") {
-                                        this.jumpo();
+                                        alert("hello");
                                     }
                                 }
                                 ,
@@ -267,10 +271,7 @@
                                 },
                                 s
                             }
-                            jumpo = function() {
-                                console.log("The 'jumpo' function has been triggered!");
-                                alert("set");
-                            };
+                            
                             return Object(h.a)(n, [{
                                 key: "componentDidMount",
                                 value: function() {
